@@ -3,7 +3,7 @@ import React from "react";
 function Categories() {
   const burgerName = [
     { id: 1, name: "Meals", price: 3.99, src: "/categories.png" },
-    { id: 2, name: "Burgers", price: 4.79, src: "/categories2.png" },
+    { id: 2, name: "Burgers", price: 4.79, src: "/categories.png" },
     { id: 3, name: "Sides", price: 4.29, src: "/categories3.png" },
     { id: 4, name: "Drink", price: 3.99, src: "/categories4.png" },
     { id: 5, name: "Meals", price: 1.99, src: "/categories.png" },
