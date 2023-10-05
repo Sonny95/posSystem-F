@@ -24,8 +24,6 @@ function MenuOrderContainer() {
         />
       </div>
 
-      <div className="h-[10px] w-full bg-gray-100"></div>
-
       {/* will delete below codes after redux */}
 
       <div className="w-[269px] h-[646px] my-5 overflow-y-scroll">
