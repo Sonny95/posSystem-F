@@ -12,18 +12,19 @@ function Menu() {
     { id: 4, name: "Bic Mac", price: 3.99 },
     { id: 5, name: "McDouble", price: 1.99 },
     { id: 6, name: "Quater Pounder With Cheese Bacon", price: 4.99 },
+    { id: 7, name: "Classic Angus", price: 4.99 },
+    { id: 8, name: "Bacon Barbeque Angus", price: 5.99 },
+    { id: 9, name: "Spicy Chicken", price: 5.99 },
   ];
 
   return (
-    <div className="w-[545px] h-full mx-6 ">
+    <div className="w-[545px] h-full mx-6 overflow-y-scroll">
       {/* search bar */}
       <div className="h-[40px] w-[545px] mb-6 bg--200 my-6 ">
         <input placeholder="Search" className="w-[525px] h-full rounded-lg p-5 mx-[10px]"></input>{" "}
       </div>
 
       <div className="w-[545px] h-[644px] flex flex-wrap">
-        {/* TODO 컨테이너 사이에 빈공간 큰데 왠지모르겠음 */}
-
         {burgerName.map((value) => (
           <div
             // onClick={() => {

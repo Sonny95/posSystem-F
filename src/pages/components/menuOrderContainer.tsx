@@ -12,7 +12,7 @@ function MenuOrderContainer() {
   // return console.log(state)
   // state.cartItem});
   return (
-    <div className="w-[289px] h-full bg-gray-100 px-[10px]">
+    <div className="w-[289px] h-full bg-gray-100 px-[10px] ">
       {/* delete button */}
       <div className="w-[269px] h-[24px] flex mt-[34px] bg-white text-xl mb-[20px] ">
         <p className="font-medium mr-3">New</p>
