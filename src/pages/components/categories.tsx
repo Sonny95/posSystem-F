@@ -1,14 +1,16 @@
 import React from "react";
 
-function Categories() {
-  const burgerName = [
-    { id: 1, name: "Meals", price: 3.99, src: "/categories.png" },
-    { id: 2, name: "Burgers", price: 4.79, src: "/categories.png" },
-    { id: 3, name: "Sides", price: 4.29, src: "/categories3.png" },
-    { id: 4, name: "Drink", price: 3.99, src: "/categories4.png" },
-    { id: 5, name: "Meals", price: 1.99, src: "/categories.png" },
-  ];
+interface burger {
+  id: number;
+  name: string;
+  src: string;
+}
 
+interface categoriesProps {
+  list: burger[];
+}
+
+function Categories({ list }: categoriesProps) {
   return (
     // x/4 헸음 마진
     <div className="w-[126px] h-full flex flex-col">
@@ -25,48 +27,14 @@ function Categories() {
       </div>
       {/* categories container */}
       <div className="w-[110px] h-full  mt-[10px] ml-4 ">
-        {burgerName.map((values) => (
-          <div className="cursor-pointer ounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049]">
+        {list.map((values) => (
+          <div className="rounded-lg cursor-pointer ounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049]">
             <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
               <img src={values.src} className="w-[30px] h-[30px]" />
               <p>{values.name}</p>
             </div>
           </div>
         ))}
-        {/* <div className="rounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center">
-          <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
-            <img src="/categories.png" className="w-[30px] h-[30px]" />
-            <p>Meals</p>
-          </div>
-        </div>
-
-        <div className="rounded-lg w-[110px] h-[95px] bg-black flex flex-col items-center justify-center mt-5">
-          <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
-            <img src="/categories2.png" className="w-[30px] h-[30px]" />
-            <p className="text-white">Burgers</p>
-          </div>
-        </div>
-
-        <div className="rounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center mt-5">
-          <div className="w-[110px] h-[65px]  flex flex-col items-center justify-center">
-            <img src="/categories3.png" className="w-[30px] h-[30px]" />
-            <p>Meals</p>
-          </div>
-        </div>
-
-        <div className="rounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center mt-5">
-          <div className="w-[110px] h-[65px]  flex flex-col items-center justify-center">
-            <img src="/categories4.png" className="w-[30px] h-[30px]" />
-            <p>Meals</p>
-          </div>
-        </div>
-
-        <div className="rounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center mt-5">
-          <div className="w-[110px] h-[65px]  flex flex-col items-center justify-center">
-            <img src="/categories.png" className="w-[30px] h-[30px]" />
-            <p>Meals</p>
-          </div>
-        </div> */}
       </div>
     </div>
   );

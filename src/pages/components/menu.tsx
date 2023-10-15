@@ -1,35 +1,26 @@
 import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/cart/cartSlice";
 
-function Menu() {
-  // const dispatch = useDispatch();
+//메뉴랑 카테고리 컴포넌트에서 인터페이스 []의 뭐가 다르징 결국 [] 받는다는건 가튼거아닉가
+interface MenuItem {
+  id: number;
+  name: string;
+  price: number;
+}
 
-  const burgerName = [
-    { id: 1, name: "Quater Pounder With Cheese", price: 3.99 },
-    { id: 2, name: "Double Quater Pounder With Cheese", price: 4.79 },
-    { id: 3, name: "Quater Pounder With Cheese Deluxe", price: 4.29 },
-    { id: 4, name: "Bic Mac", price: 3.99 },
-    { id: 5, name: "McDouble", price: 1.99 },
-    { id: 6, name: "Quater Pounder With Cheese Bacon", price: 4.99 },
-    { id: 7, name: "Classic Angus", price: 4.99 },
-    { id: 8, name: "Bacon Barbeque Angus", price: 5.99 },
-    { id: 9, name: "Spicy Chicken", price: 5.99 },
-  ];
-
+function Menu({ list, clicked }: { list: MenuItem[]; clicked: (item: MenuItem) => void }) {
   return (
-    <div className="w-[545px] h-full mx-6 overflow-y-scroll">
+    <div className="w-[545px] h-full mx-[22px] overflow-y-scroll">
       {/* search bar */}
-      <div className="h-[40px] w-[545px] mb-6 bg--200 my-6 ">
+      <div className="h-[40px] w-[545px] my-[30px] ">
         <input placeholder="Search" className="w-[525px] h-full rounded-lg p-5 mx-[10px]"></input>{" "}
       </div>
 
       <div className="w-[545px] h-[644px] flex flex-wrap">
-        {burgerName.map((value) => (
+        {list.map((value) => (
           <div
-            // onClick={() => {
-            //   dispatch(addToCart(value));
-            // }}
+            onClick={() => {
+              clicked(value);
+            }}
             className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer	"
             key={value.id}
           >
@@ -40,6 +31,7 @@ function Menu() {
             <p className="font-bold text-center text-m">{value.name}</p>
           </div>
         ))}
+        <div className="bg-gray-100 w-full h-2.5"></div>
       </div>
     </div>
   );
