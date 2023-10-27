@@ -9,7 +9,7 @@ const initialState: categoryState = {
 };
 
 export const categorySlice = createSlice({
-  name: "cart",
+  name: "categories",
   initialState,
   reducers: {},
 });

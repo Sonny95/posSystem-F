@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Categories from "./components/categories";
 import Menu from "./components/menu";
 import MenuOrderContainer from "./components/menuOrderContainer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decreasmentQuantity, removeItem, initCart } from "../modules/cartSlice";
-import { useSelector } from "react-redux";
+import axios from "axios";
 
 interface RootState {
   cart: {
@@ -13,6 +13,8 @@ interface RootState {
 }
 
 export default function Home() {
+  const [categories, setCategories] = useState([]);
+  const [foods, setFoods] = useState([]);
   const dispatch = useDispatch();
 
   const cartItems = useSelector((state: RootState) => {
@@ -20,32 +22,34 @@ export default function Home() {
     return state.cart.cartItem;
   });
 
-  const categoriesName = [
-    { id: 1, name: "Meals", src: "/categories.png" },
-    { id: 2, name: "Burgers", src: "/categories.png" },
-    { id: 3, name: "Sides", src: "/categories3.png" },
-    { id: 4, name: "Drink", src: "/categories4.png" },
-    { id: 5, name: "Meals", src: "/categories.png" },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/categories")
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-  const menuList = [
-    { id: 1, name: "Quater Pounder With Cheese", price: 3.99 },
-    { id: 2, name: "Double Quater Pounder With Cheese", price: 4.79 },
-    { id: 3, name: "Quater Pounder With Cheese Deluxe", price: 4.29 },
-    { id: 4, name: "Bic Mac", price: 3.99 },
-    { id: 5, name: "McDouble", price: 1.99 },
-    { id: 6, name: "Quater Pounder With Cheese Bacon", price: 4.99 },
-    { id: 7, name: "Classic Angus", price: 4.99 },
-    { id: 8, name: "Bacon Barbeque Angus", price: 5.99 },
-    { id: 9, name: "Spicy Chicken", price: 5.99 },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/foods")
+      .then((response) => {
+        setFoods(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <div className="w-full flex items-center justify-center">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
-        <Categories list={categoriesName} />
+        <Categories list={categories} />
         <Menu
-          list={menuList}
+          list={foods}
           clicked={(value: any) => {
             dispatch(addToCart(value));
           }}
