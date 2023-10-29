@@ -45,7 +45,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <Categories list={categories} />
         <Menu

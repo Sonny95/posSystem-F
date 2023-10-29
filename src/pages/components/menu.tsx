@@ -5,11 +5,12 @@ interface MenuItem {
   id: number;
   name: string;
   price: number;
+  src: string;
 }
 
 function Menu({ list, clicked }: { list: MenuItem[]; clicked: (item: MenuItem) => void }) {
   return (
-    <div className="w-[545px] h-full mx-[22px] overflow-y-scroll">
+    <div className="w-[545px] h-full mx-[22px] overflow-y-scroll overflow-x-hidden">
       {/* search bar */}
       <div className="h-[40px] w-[545px] my-[30px] ">
         <input placeholder="Search" className="w-[525px] h-full rounded-lg p-5 mx-[10px]"></input>{" "}
@@ -25,7 +26,7 @@ function Menu({ list, clicked }: { list: MenuItem[]; clicked: (item: MenuItem) =
             key={value.id}
           >
             <div className="w-[122px] h-[122px] my-0 mx-auto mt-4 flex items-center justify-center">
-              <img src="/burger.png" className="w-[105.92px] h-[90px]" />
+              <img src={value.src} className="w-[105.92px] h-[90px]" />
             </div>
             <p className="text-center my-2">${value.price}</p>
             <p className="font-bold text-center text-m">{value.name}</p>

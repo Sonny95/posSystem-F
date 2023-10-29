@@ -9,8 +9,8 @@ function CheckoutMenuOrderContainer() {
           <button className="mr-2 h-[20px] ml-auto cursor-pointer">x</button>
         </div>
 
-        <div className="w-[397px] h-[666px] bg-gray-100 my-5 overflow-y-scroll">
-          <div className="w-[397px] h-[110px] flex  bg-white mb-[10px]">
+        <div className="w-[397px] h-[666px] bg-gray-100 my-5 overflow-y-scroll overflow-x-hidden">
+          {/* <div className=" w-[397px] h-[110px] flex  bg-white mb-[10px]">
             <div className="w-[72px] h-[72px] flex justify-center items-center">
               <img src="/burger.png" className="w-[62.5px] h-[53.1px] " />
             </div>
@@ -32,7 +32,7 @@ function CheckoutMenuOrderContainer() {
                 <div className="cursor-pointer">X</div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
