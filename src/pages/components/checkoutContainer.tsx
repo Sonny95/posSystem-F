@@ -12,7 +12,6 @@ interface item {
 
 function CheckoutContainer({ data }: { data: { cartItems: item[]; cartTotalPrice: number } }) {
   const { cartItems, cartTotalPrice } = data;
-  console.log(cartItems[0].cartQuantity, "cartItems");
   const PaymentList = [
     { id: 1, name: "Credit Card", src: "/creditCard.svg" },
     { id: 2, name: "Cash", src: "/cash.svg" },
@@ -32,9 +31,9 @@ function CheckoutContainer({ data }: { data: { cartItems: item[]; cartTotalPrice
       orderTime: currentTime,
       totalPrice: cartTotalPrice,
       payment: "Credit Card",
-      item: cartItems,
-      qty: cartItems,
+      items: cartItems,
     };
+    console.log(requestData, "requestData");
 
     axios
       .post("http://localhost:8080/order", requestData)
@@ -48,47 +47,6 @@ function CheckoutContainer({ data }: { data: { cartItems: item[]; cartTotalPrice
         console.log(orderError);
       });
   };
-
-  // const onSubmit = () => {
-  //   const currentTime = new Date().toISOString();
-  //   const requestData = {
-  //     orderTime: currentTime,
-  //     totalPrice: cartTotalPrice,
-  //     payment: "Credit Card",
-  //     item: cartItems[0].name,
-  //     qty: cartItems[0].cartQuantity,
-  //   };
-
-  //   axios
-  //     .post("http://localhost:8080/order", requestData)
-  //     .then((orderResponse) => {
-  //       console.log(orderResponse.status, "orderResponse.status");
-  //       if (orderResponse.status === 200) {
-  //         console.log("asdf");
-  //         // const orderID = orderResponse.data.id;
-  //         // console.log(orderID, "orderID");
-  //         const requestItemsData = {
-  //           // orderNumber: orderID,
-  //           item: cartItems[0].name,
-  //           qty: cartItems[0].cartQuantity,
-  //         };
-  //         console.log(requestItemsData, "requestItemsData");
-  //         axios
-  //           .post("http://localhost:8080/orderItems", requestItemsData)
-  //           .then((orderItemsResponse) => {
-  //             if (orderItemsResponse.status === 200) {
-  //               alert("Ordered successfully");
-  //             }
-  //           })
-  //           .catch((orderItemsError) => {
-  //             console.log(orderItemsError);
-  //           });
-  //       }
-  //     })
-  //     .catch((orderError) => {
-  //       console.log(orderError);
-  //     });
-  // };
 
   return (
     <div className="w-[448px] h-[744px] bg-white flex items-center justify-center ">
@@ -111,7 +69,7 @@ function CheckoutContainer({ data }: { data: { cartItems: item[]; cartTotalPrice
         <div className="w-[377px] h-[521px]">
           <div className="w-full h-[64px] flex justify-between ">
             {CardPayment.map((value) => (
-              <div className="rounded-lg cursor-pointer ounded-lg w-[86px] h-[64px] bg-white flex  my-[20px] hover:bg-[#003049]">
+              <div className="rounded-lg ounded-lg w-[86px] h-[64px] bg-white flex  my-[20px]">
                 <div className="w-[86px] h-[64px] flex flex-col items-center justify-center">
                   <img src={value.src} className="w-full " />
                 </div>
