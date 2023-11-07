@@ -8,16 +8,16 @@ interface MenuItem {
   src: string;
 }
 
-function Menu({ list, clicked }: { list: MenuItem[]; clicked: (item: MenuItem) => void }) {
+function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) => void }) {
   return (
-    <div className="w-[545px] h-full mx-[22px] overflow-y-scroll overflow-x-hidden">
+    <div className="w-[545px] h-full mx-[22px] overflow-y-visible overflow-x-hidden">
       {/* search bar */}
       <div className="h-[40px] w-[545px] my-[30px] ">
         <input placeholder="Search" className="w-[525px] h-full rounded-lg p-5 mx-[10px]"></input>{" "}
       </div>
 
       <div className="w-[545px] h-[644px] flex flex-wrap">
-        {list.map((value) => (
+        {data.map((value) => (
           <div
             onClick={() => {
               clicked(value);

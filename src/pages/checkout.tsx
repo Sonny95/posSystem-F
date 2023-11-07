@@ -5,19 +5,28 @@ import CheckoutMenuOrderContainer from "./components/checkoutMenuOrderContainer"
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-interface item {
-  id: number;
-  name: string;
-  price: number;
-  src: any;
-  cartQuantity: number;
+// interface item {
+//   id: number;
+//   name: string;
+//   price: number;
+//   src: any;
+//   cartQuantity: number;
+// }
+
+interface RootState {
+  cart: {
+    cartItem: any[];
+    cartTotalPrice: number;
+  };
 }
 
 type clicekdFunction = (event: any, value: any) => void;
 
-function checkout({ list, clicked }: { list: item[]; clicked: clicekdFunction }) {
-  console.log(list, "list of list");
+function checkout() {
   const [categories, setCategories] = useState([]);
+
+  const cartItems = useSelector((state: RootState) => state.cart.cartItem);
+  const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
 
   useEffect(() => {
     axios
@@ -32,9 +41,9 @@ function checkout({ list, clicked }: { list: item[]; clicked: clicekdFunction })
   return (
     <div className="w-full flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
-        <Categories list={categories} />
-        <CheckoutMenuOrderContainer />
-        <CheckoutContainer />
+        <Categories categories={categories} />
+        <CheckoutMenuOrderContainer data={{ cartItems, cartTotalPrice }} />
+        <CheckoutContainer data={{ cartItems, cartTotalPrice }} />
       </div>
     </div>
   );

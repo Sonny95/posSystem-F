@@ -16,13 +16,13 @@ function Cart({ list, clicked }: { list: item[]; clicked: clicekdFunction }) {
     <div>
       {list?.map((value) => (
         <div className="w-full flex  bg-white mb-[10px]">
-          <div className="w-[72px] h-[72px] flex justify-center items-center">
+          <div className="w-2/12 h-[72px] flex justify-center items-center ">
             <img src="/burger.png" alt={value.src} className="w-[62.5px] h-[53.1px] " />
           </div>
-          <div className="w-[197px] h-[90px] flex my-[20px] px-[10px]">
-            <div className="w-[144px] h-[90px] text-[13px]">
+          <div className="w-10/12 h-[90px] flex my-[20px] px-[10px] ">
+            <div className="w-full h-[90px] text-[13px] ">
               <p>{value.name}</p>
-              <div className="w-[127px] h-[30px] flex mt-[20px]">
+              <div className="w-[127px] h-[30px] flex mt-[20px] ">
                 <button
                   onClick={() => clicked("-", value)}
                   className="w-[30px] h-[30px] bg-[#003049] rounded-full text-white mr-[30px]"

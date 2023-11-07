@@ -8,10 +8,10 @@ interface burger {
 }
 
 interface categoriesProps {
-  list: burger[];
+  categories: burger[];
 }
 
-function Categories({ list }: categoriesProps) {
+function Categories({ categories }: categoriesProps) {
   return (
     // x/4 헸음 마진
     <div className="w-[126px] h-full flex flex-col">
@@ -28,7 +28,7 @@ function Categories({ list }: categoriesProps) {
       </div>
       {/* categories container */}
       <div className="w-[110px] h-full  mt-[10px] ml-4 ">
-        {list.map((values) => (
+        {categories.map((values) => (
           <div className="rounded-lg cursor-pointer ounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049]">
             <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
               <img src={values.src} className="w-[30px] h-[30px]" />

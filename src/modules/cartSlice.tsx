@@ -3,12 +3,14 @@ import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 interface itemState {
   cartItem: any[];
   cartQuantity: number;
+  cartTotalPrice: number;
 }
 
 const initialState: itemState = {
   //if it doesn't have a data, make a []
   cartItem: [],
   cartQuantity: 0,
+  cartTotalPrice: 0,
 };
 
 export const cartSlice = createSlice({
@@ -39,24 +41,40 @@ export const cartSlice = createSlice({
           (cartItem) => cartItem.id !== action.payload.id
         );
         state.cartItem = nextCartItems;
-
-        // localStorage.setItem("cartItems", JSON.stringify(state.cartItem));
       }
     },
     removeItem(state, action) {
       //필터 사용해서 거르려는 아이디랑 맞는거 삭제하고 업데이트
       const nextCartItems = state.cartItem.filter((cartItem) => cartItem.id !== action.payload.id);
       state.cartItem = nextCartItems;
-
-      // localStorage.setItem("cartItems", JSON.stringify(state.cartItem));
     },
     initCart(state, action) {
       state.cartItem = [];
-      // localStorage.setItem("cartItems", JSON.stringify(state.cartItem));
+    },
+    updateTotals(state, action) {
+      console.log(state.cartItem, "state.cartItem");
+      let { total, quantity } = state.cartItem.reduce(
+        (cartTotal, cartItem) => {
+          const { price, cartQuantity } = cartItem;
+          const itemTotal = price * cartQuantity;
+
+          cartTotal.total += itemTotal;
+          cartTotal.quantity += cartQuantity;
+
+          return cartTotal;
+        },
+        {
+          total: 0,
+          quantity: 0,
+        }
+      );
+      state.cartQuantity = quantity;
+      state.cartTotalPrice = total;
     },
   },
 });
 
-export const { addToCart, decreasmentQuantity, removeItem, initCart } = cartSlice.actions;
+export const { addToCart, decreasmentQuantity, removeItem, initCart, updateTotals } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

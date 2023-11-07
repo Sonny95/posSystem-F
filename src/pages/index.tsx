@@ -3,12 +3,19 @@ import Categories from "./components/categories";
 import Menu from "./components/menu";
 import MenuOrderContainer from "./components/menuOrderContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, decreasmentQuantity, removeItem, initCart } from "../modules/cartSlice";
+import {
+  addToCart,
+  decreasmentQuantity,
+  removeItem,
+  initCart,
+  updateTotals,
+} from "../modules/cartSlice";
 import axios from "axios";
 
 interface RootState {
   cart: {
     cartItem: any[];
+    cartTotalPrice: number;
   };
 }
 
@@ -21,6 +28,8 @@ export default function Home() {
     console.log(state, "cartItems");
     return state.cart.cartItem;
   });
+
+  const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
 
   useEffect(() => {
     axios
@@ -44,18 +53,24 @@ export default function Home() {
       });
   }, []);
 
+  //cartitems 값이 변경될때마다 동ㅇ작
+  useEffect(() => {
+    dispatch(updateTotals({ cartItems, cartTotalPrice }));
+  }, [cartItems]);
+
   return (
-    <div className="w-full flex items-center justify-center bg-gray-100">
+    <div className="w-full h-full flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
-        <Categories list={categories} />
+        <Categories categories={categories} />
         <Menu
-          list={foods}
+          data={foods}
           clicked={(value: any) => {
             dispatch(addToCart(value));
           }}
         />
         <MenuOrderContainer
-          list={cartItems}
+          cartItems={cartItems}
+          cartTotalPrice={cartTotalPrice}
           clicked={(event, value) => {
             if (event === "-") {
               dispatch(decreasmentQuantity(value));
