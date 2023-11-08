@@ -1,62 +1,32 @@
 import React, { useEffect, useState } from "react";
+import TimeComponent from "./timeComponent";
 
 function AdminMiddleComponent() {
-  const [currentDate, setCurrentDate] = useState("");
-  const [currentWeekDate, setCurrentWeekDate] = useState("");
-
-  useEffect(() => {
-    const updateCurrentDate = () => {
-      const now = new Date();
-      const date = now.toLocaleDateString("en-AU", {
-        year: "numeric",
-        month: "long",
-        day: "2-digit",
-      });
-      setCurrentDate(date);
-    };
-
-    // 초기 날짜 업데이트
-    updateCurrentDate();
-
-    // 1분마다 날짜 업데이트
-    const intervalId = setInterval(updateCurrentDate, 60000);
-
-    // 컴포넌트가 언마운트될 때 interval 정리
-    return () => clearInterval(intervalId);
-  }, []);
-
-  useEffect(() => {
-    const updateCurrentTime = () => {
-      const now = new Date();
-      const weekDate = now.toLocaleDateString("en-AU", {
-        weekday: "long",
-      });
-      const time = now.toLocaleTimeString("en-AU", {
-        hour12: false, // 12시간 형식 사용 안 함
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-
-      const currentDateTime = weekDate + " | " + time;
-      setCurrentWeekDate(currentDateTime);
-    };
-
-    // 초기 시간 업데이트
-    updateCurrentTime();
-
-    // 1분마다 시간 업데이트
-    const intervalId = setInterval(updateCurrentTime, 60000);
-
-    // 컴포넌트가 언마운트될 때 interval 정리
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <div>
       <div className="w-[509px] h-full mx-[22px] overflow-y-visible overflow-x-hidden bg-blue-100">
-        <div className="h-[19px] flex">
-          <p style={{ fontWeight: "bold" }}> {currentDate}</p>
-          <p>{currentWeekDate}</p>
+        <TimeComponent />
+        {/* menu button */}
+        <div className="my-[30px] flex ">
+          <div className="w-[66px] h-[19px] cursor-pointer mr-[30px]">Pending</div>
+          <div className="w-[66px] h-[19px] cursor-pointer">Completed</div>
+        </div>
+
+        {/* card */}
+        <div className="w-full h-[98px] bg-white p-[10px] ">
+          <div className="w-full flex justify-between mb-[20px]">
+            <p className="">orderNumber #00</p>
+            <p>00:00</p>
+          </div>
+          <div className="w-full flex justify-between">
+            <p>Number of items total QTY</p>
+            <div className="flex">
+              <p className="mr-[20px]">$0.0</p>
+              <div className="rounded-xl bg-green-500 w-[67px] h-[24px] flex justify-center alignItms-center ">
+                Paid
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

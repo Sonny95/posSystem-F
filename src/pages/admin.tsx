@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import AdminCategories from "./components/adminCategories";
 import AdminMiddleComponent from "./components/adminMiddleComponent";
+import AdminOrder from "./components/adminOrder";
 
 interface RootState {
   cart: {
@@ -37,6 +38,7 @@ function PendingPage() {
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <AdminCategories categories={categories} />
         <AdminMiddleComponent />
+        <AdminOrder />
       </div>
     </div>
   );
