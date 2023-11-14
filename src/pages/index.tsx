@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Categories from "./components/categories";
-import Menu from "./components/menu";
-import MenuOrderContainer from "./components/menuOrderContainer";
+import Categories from "./components/general/categories";
+import Menu from "./components/user/menu";
+import MenuOrderContainer from "./components/user/menuOrderContainer";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,

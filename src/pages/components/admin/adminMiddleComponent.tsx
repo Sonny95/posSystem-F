@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TimeComponent from "./timeComponent";
+import TimeComponent from "../general/timeComponent";
 
 function AdminMiddleComponent() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import PayButton from "./payButton";
+import PayButton from "../user/payButton";
 import axios from "axios";
 
 interface item {

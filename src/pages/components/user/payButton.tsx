@@ -5,7 +5,7 @@ interface PayButtonProps {
   onClick: () => void;
 }
 
-function PayButton({ cartTotalPrice, onClick }: PayButtonProps) {
+function PayButton({ cartTotalPrice, onClick = () => {} }: PayButtonProps) {
   return (
     <div className="w-full h-full">
       <button

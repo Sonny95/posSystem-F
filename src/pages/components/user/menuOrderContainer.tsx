@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Cart from "./cart";
+import Cart from "../general/cart";
 import { useSelector } from "react-redux";
 import PayButton from "./payButton";
 
@@ -47,12 +47,7 @@ function MenuOrderContainer({ cartItems, cartTotalPrice, clicked }: MenuOrderCon
       {/* 페이벗튼 */}
       <Link href="/checkout">
         <div className=" w-[289px] h-[48px]">
-          <PayButton
-            cartTotalPrice={cartTotalPrice}
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-          />
+          <PayButton cartTotalPrice={cartTotalPrice} onClick={() => {}} />
         </div>
       </Link>
     </div>

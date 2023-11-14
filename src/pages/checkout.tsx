@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CheckoutContainer from "./components/checkoutContainer";
-import Categories from "./components/categories";
-import CheckoutMenuOrderContainer from "./components/checkoutMenuOrderContainer";
+import CheckoutContainer from "./components/checkout/checkoutContainer";
+import Categories from "./components/general/categories";
+import CheckoutMenuOrderContainer from "./components/checkout/checkoutMenuOrderContainer";
 import { useSelector } from "react-redux";
 import axios from "axios";
-
-// interface item {
-//   id: number;
-//   name: string;
-//   price: number;
-//   src: any;
-//   cartQuantity: number;
-// }
 
 interface RootState {
   cart: {
