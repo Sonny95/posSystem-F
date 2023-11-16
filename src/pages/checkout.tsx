@@ -8,6 +8,7 @@ import axios from "axios";
 interface RootState {
   cart: {
     cartItem: any[];
+    cartQuantity: number;
     cartTotalPrice: number;
   };
 }
@@ -18,6 +19,7 @@ function checkout() {
   const [categories, setCategories] = useState([]);
 
   const cartItems = useSelector((state: RootState) => state.cart.cartItem);
+  const cartQuantity = useSelector((state: RootState) => state.cart.cartQuantity);
   const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ function checkout() {
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <Categories categories={categories} />
         <CheckoutMenuOrderContainer data={{ cartItems, cartTotalPrice }} />
-        <CheckoutContainer data={{ cartItems, cartTotalPrice }} />
+        <CheckoutContainer data={{ cartItems, cartTotalPrice, cartQuantity }} />
       </div>
     </div>
   );

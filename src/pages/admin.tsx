@@ -18,6 +18,7 @@ function PendingPage() {
   const [categories, setCategories] = useState([]);
   const [order, setOrder] = useState([]);
   const [item, setItem] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   console.log(order, "order");
 
@@ -35,16 +36,16 @@ function PendingPage() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8080/adminOrder")
-  //     .then((response) => {
-  //       setOrder(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/adminOrder?page=${currentPage}`)
+      .then((response) => {
+        setOrder(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [currentPage]);
 
   useEffect(() => {
     axios
@@ -61,7 +62,7 @@ function PendingPage() {
     <div className="w-full flex items-center justify-center bg-gray-100 ">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <AdminCategories categories={categories} />
-        <AdminMiddleComponent />
+        <AdminMiddleComponent orderData={order} currentPage={currentPage} />
         <AdminOrder item={item} />
       </div>
     </div>

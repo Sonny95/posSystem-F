@@ -24,7 +24,7 @@ function CheckoutMenuOrderContainer({
           <button className="mr-2 h-[20px] ml-auto cursor-pointer">x</button>
         </div>
 
-        <div className="w-[397px] h-[666px] my-5 overflow-y-scroll overflow-x-hidden">
+        <div className="w-[397px] h-[666px] my-5 overflow-y-visible overflow-x-hidden">
           <Cart
             list={cartItems}
             clicked={function (event: any, value: any): void {

@@ -10,8 +10,12 @@ interface item {
   cartQuantity: number;
 }
 
-function CheckoutContainer({ data }: { data: { cartItems: item[]; cartTotalPrice: number } }) {
-  const { cartItems, cartTotalPrice } = data;
+function CheckoutContainer({
+  data,
+}: {
+  data: { cartItems: item[]; cartQuantity: number; cartTotalPrice: number };
+}) {
+  const { cartItems, cartQuantity, cartTotalPrice } = data;
   const PaymentList = [
     { id: 1, name: "Credit Card", src: "/creditCard.svg" },
     { id: 2, name: "Cash", src: "/cash.svg" },
@@ -32,6 +36,7 @@ function CheckoutContainer({ data }: { data: { cartItems: item[]; cartTotalPrice
       totalPrice: cartTotalPrice,
       payment: "Credit Card",
       items: cartItems,
+      totalQty: cartQuantity,
     };
     console.log(requestData, "requestData");
 
