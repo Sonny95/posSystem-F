@@ -17,27 +17,6 @@ interface AdminMiddleComponentProps {
 }
 
 function AdminMiddleComponent({ orderData, currentPage }: AdminMiddleComponentProps) {
-  const [active, setActive] = React.useState(1);
-
-  const getItemProps = (index: React.SetStateAction<number>) =>
-    ({
-      variant: active === index ? "filled" : "text",
-      color: "gray",
-      onClick: () => setActive(index),
-    } as any);
-
-  const next = () => {
-    if (active === 5) return;
-
-    setActive(active + 1);
-  };
-
-  const prev = () => {
-    if (active === 1) return;
-
-    setActive(active - 1);
-  };
-
   return (
     <div>
       <div className="w-[509px] h-[95%] mx-[22px] overflow-y-visible overflow-x-hidden bg-blue-100">
@@ -76,41 +55,6 @@ function AdminMiddleComponent({ orderData, currentPage }: AdminMiddleComponentPr
         ))}
       </div>
       {/* pagenation */}
-      <div className="flex items-center gap-10 text-xl justify-center ">
-        <Button
-          variant="text"
-          className="flex items-center gap-4 hover:text-green-500 text-black"
-          onClick={prev}
-          disabled={active === 1}
-        >
-          <ArrowLeftIcon strokeWidth={2} className="h-4 w-4 " />
-        </Button>
-        <div className="flex items-center gap-4 ">
-          <IconButton {...getItemProps(1)} className="hover:text-green-500 text-black">
-            1
-          </IconButton>
-          <IconButton {...getItemProps(2)} className="hover:text-green-500 text-black">
-            2
-          </IconButton>
-          <IconButton {...getItemProps(3)} className="hover:text-green-500 text-black">
-            3
-          </IconButton>
-          <IconButton {...getItemProps(4)} className="hover:text-green-500 text-black">
-            4
-          </IconButton>
-          <IconButton {...getItemProps(5)} className="hover:text-green-500 text-black">
-            5
-          </IconButton>
-        </div>
-        <Button
-          variant="text"
-          className="flex items-center gap-4 hover:text-green-500 text-black"
-          onClick={next}
-          disabled={active === 5}
-        >
-          <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
-        </Button>
-      </div>
     </div>
   );
 }

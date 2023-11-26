@@ -14,6 +14,14 @@ interface RootState {
   };
 }
 
+interface result {
+  id: number;
+  orderTime: any;
+  totalPrice: any;
+  payment: string;
+  totalQty: number;
+}
+
 function PendingPage() {
   const [categories, setCategories] = useState([]);
   const [order, setOrder] = useState([]);
@@ -40,7 +48,8 @@ function PendingPage() {
     axios
       .get(`http://localhost:8080/adminOrder?page=${currentPage}`)
       .then((response) => {
-        setOrder(response.data);
+        setOrder(response.data.result);
+        console.log(response.data, "setOrder");
       })
       .catch((error) => {
         console.error(error);
