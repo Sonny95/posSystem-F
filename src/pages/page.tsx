@@ -3,7 +3,7 @@ import Pagination from "./components/general/pagination";
 import axios from "axios";
 
 function Page() {
-  // const totalPage = 110;
+  // const totalPage = 23;
   const [totalPage, setTotalPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [order, setOrder] = useState([]);
@@ -11,6 +11,7 @@ function Page() {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/adminOrder?page=${currentPage}`)
@@ -29,7 +30,6 @@ function Page() {
       {/* onPageChange페이지 변경될때마다 currentpage */}
       <Pagination
         totalPage={totalPage}
-        order={order}
         onPageChange={handlePageChange}
         // onPageChange={(page) => handlePageChange(page, totalPage)}
       />

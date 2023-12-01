@@ -5,10 +5,9 @@ import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 interface PagenationProps {
   totalPage: number;
   onPageChange: (page: number) => void;
-  order: any[];
 }
 
-function Pagenation({ totalPage, onPageChange, order }: PagenationProps) {
+function Pagenation({ totalPage, onPageChange }: PagenationProps) {
   const [active, setActive] = React.useState(1);
 
   const getItemProps = (index: number) =>
@@ -49,6 +48,15 @@ function Pagenation({ totalPage, onPageChange, order }: PagenationProps) {
         </IconButton>
       );
     }
+    //액티브가 3 밑일때 5번까지 포문돌아서 숫자 5개 페이지다보여줌
+  } else if (active < 3) {
+    for (let index = 1; index <= 5; index++) {
+      pageButtons.push(
+        <IconButton key={index} {...getItemProps(index)}>
+          {index}
+        </IconButton>
+      );
+    }
   } else {
     // active가 페이지 3번 을 넘어 누르게되면 ... 앞뒤로 붙여주는데 액티브꺼에서 -2랑 +2 한 숫자까지만뜸
     if (active > 3) {
@@ -70,7 +78,7 @@ function Pagenation({ totalPage, onPageChange, order }: PagenationProps) {
   }
 
   return (
-    <div className="flex items-center gap-4 bg-gray-100">
+    <div className="flex items-center gap-4 w-full justify-center">
       <Button
         variant="text"
         className="flex items-center gap-2"

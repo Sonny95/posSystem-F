@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from "react";
 import TimeComponent from "../general/timeComponent";
-import { Button, IconButton } from "@material-tailwind/react";
-import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import AdminOrderHistory from "./adminOrderHistory";
 
-interface itemProps {
-  id: number;
-  orderTime: any;
-  totalPrice: any;
-  payment: string;
-  totalQty: number;
-}
+function AdminMiddleComponents({ onClickCard }: any) {
+  const passToCard = (clickedId: any) => {
+    onClickCard(clickedId);
+  };
 
-interface AdminMiddleComponentProps {
-  orderData: itemProps[];
-  currentPage: number;
-}
-
-function AdminMiddleComponent({ orderData, currentPage }: AdminMiddleComponentProps) {
   return (
     <div>
-      <div className="w-[509px] h-[95%] mx-[22px] overflow-y-visible overflow-x-hidden bg-blue-100">
+      <div className="w-[509px] h-[95%] mx-[22px] overflow-y-visible overflow-x-hidden ">
         <TimeComponent />
         {/* menu button */}
         <div className="my-[30px] flex ">
@@ -28,35 +18,10 @@ function AdminMiddleComponent({ orderData, currentPage }: AdminMiddleComponentPr
         </div>
 
         {/* card */}
-        {orderData?.map((value) => (
-          <div className="w-full h-[98px] bg-white p-[10px] ">
-            <div className="w-full flex justify-between mb-[20px]">
-              <p className="">orderNumber #{value?.id}</p>
-              <p>{`${new Date(value?.orderTime).toLocaleTimeString("en-GB", {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-              })}, ${new Date(value?.orderTime).toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-              })}`}</p>
-            </div>
-            <div className="w-full flex justify-between">
-              <p>Number of items {value?.totalQty}</p>
-              <div className="flex">
-                <p className="mr-[20px]">${value?.totalPrice}</p>
-                <div className="rounded-xl bg-green-500 w-[67px] h-[24px] flex justify-center alignItms-center ">
-                  Paid
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+        <AdminOrderHistory onClickCard={passToCard} />
       </div>
-      {/* pagenation */}
     </div>
   );
 }
 
-export default AdminMiddleComponent;
+export default AdminMiddleComponents;
