@@ -42,28 +42,6 @@ function PendingPage() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:8080/adminOrder?page=${currentPage}`)
-  //     .then((response) => {
-  //       setOrder(response.data.data.result);
-  //       console.log(response.data.data.result, "setOrder");
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, [currentPage]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/adminOrderDetail")
-      .then((response) => {
-        setItem(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
   const handleCardClick = (clickedId: any) => {
     console.log("id", clickedId);
     setOnClickId(clickedId);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CompleteButton from "../admin/completeButton";
 import Link from "next/link";
+import axios from "axios";
 
 interface Item {
   orderNumber: number;
@@ -9,17 +10,19 @@ interface Item {
 }
 
 function AdminOrder({ onClickCard }: any) {
-  console.log(onClickCard, "1111");
   const [cardClick, setCardClick] = useState();
+  const [itemsData, setItemsData] = useState([]);
 
   useEffect(() => {
-    setCardClick(onClickCard);
-    console.log(setCardClick, "3333");
-    console.log(onClickCard, "4444");
+    axios
+      .get(`http://localhost:8080/adminOrderDetail/${onClickCard}`)
+      .then((response) => {
+        setItemsData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [onClickCard]);
-
-  // 상태 값이 어떻게 변경되는지 확인
-  console.log(cardClick, "2222");
 
   return (
     <div className="w-[309px] h-full p-[10px] mr-[16px] bg-white">
@@ -27,7 +30,6 @@ function AdminOrder({ onClickCard }: any) {
         <p className="font-semibold mr-3">Order</p>
         <p>#{onClickCard}</p>
       </div>
-
       <div className="w-[239px] flex justify-between my-[20px]">
         <p>Item</p>
         <p>Qty</p>
@@ -36,15 +38,18 @@ function AdminOrder({ onClickCard }: any) {
       {/* card */}
 
       <div className=" w-[289px] h-[559px] mt-[20px] overflow-y-visible overflow-x-hidden">
-        <div className="w-[289px] mb-[10px] bg-yellow-200 flex justify-between">
-          <div className="w-[239px] bg-yellow-300 justify-between flex">
-            <div className="w-[184px] bg-yellow-400">
-              <p>item</p>
+        {itemsData?.map((value: Item) => (
+          <div className="w-[289px] mb-[10px] bg-yellow-200 flex justify-between">
+            <div className="w-[239px] bg-yellow-300 justify-between flex">
+              <div className="w-[184px] bg-yellow-400">
+                <p>{value?.item}</p>
+              </div>
+              <p>{value?.qty}</p>
             </div>
-            <p>qty</p>
+
+            <input type="checkbox"></input>
           </div>
-          <input type="checkbox"></input>
-        </div>
+        ))}
       </div>
 
       {/* completeButton */}
