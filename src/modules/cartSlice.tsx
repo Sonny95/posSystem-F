@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
-
 interface itemState {
   cartItem: any[];
   cartQuantity: number;
   cartTotalPrice: number;
 }
+
+import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 
 const initialState: itemState = {
   //if it doesn't have a data, make a []

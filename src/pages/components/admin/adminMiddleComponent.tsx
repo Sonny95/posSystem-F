@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import TimeComponent from "../general/timeComponent";
 import AdminOrderHistory from "./adminOrderHistory";
 
-function AdminMiddleComponents({ onClickCard }: any) {
-  const passToCard = (clickedId: any) => {
-    onClickCard(clickedId);
-  };
-
+function AdminMiddleComponents() {
   return (
     <div>
       <div className="w-[509px] h-[95%] mx-[22px] overflow-y-visible overflow-x-hidden ">
@@ -18,7 +14,7 @@ function AdminMiddleComponents({ onClickCard }: any) {
         </div>
 
         {/* card */}
-        <AdminOrderHistory onClickCard={passToCard} />
+        <AdminOrderHistory />
       </div>
     </div>
   );

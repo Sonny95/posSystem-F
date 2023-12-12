@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "../../components/general/pagination";
+import { useDispatch } from "react-redux";
+import { updateId } from "../../../modules/adminSlice";
 
 interface order {
   id: number;
@@ -11,13 +13,20 @@ interface order {
   totalQty: number;
 }
 
-function AdminOrderHistory({ onClickCard }: any) {
+function AdminOrderHistory({ value }: any) {
+  const dispatch = useDispatch();
+
   const [totalPage, setTotalPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [order, setOrder] = useState<order[]>([]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleClick = (value: { id: any } | undefined) => {
+    dispatch(updateId(value?.id));
+    console.log(value?.id, "???????");
   };
 
   useEffect(() => {
@@ -32,15 +41,16 @@ function AdminOrderHistory({ onClickCard }: any) {
       .catch((error) => {
         console.error(error);
       });
-  }, [currentPage, totalPage]);
+  }, [currentPage]);
 
   return (
     <div>
       {order?.map((value) => (
         <div
+          key={value.id}
           className="w-full h-[98px] p-[10px] bg-white my-[10px] cursor-pointer"
           onClick={() => {
-            onClickCard(value.id);
+            handleClick(value);
           }}
         >
           <div className="w-full flex justify-between mb-[20px] ">

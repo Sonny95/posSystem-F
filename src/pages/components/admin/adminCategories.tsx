@@ -13,7 +13,7 @@ interface categories {
 
 function AdminCategories({ categories }: categories) {
   return (
-    <div className="w-[126px] h-full flex flex-col  mt-[20px] bg-red-100 ">
+    <div className="w-[126px] h-full flex flex-col  mt-[20px] ">
       {/* Logo container */}
       <div className="w-[102px] h-[102px] mt-[10px] ml-[16px] flex flex-col items-center justify-center ">
         <img

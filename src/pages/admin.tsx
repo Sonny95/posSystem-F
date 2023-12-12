@@ -26,7 +26,6 @@ function PendingPage() {
   const [categories, setCategories] = useState([]);
   const [order, setOrder] = useState([]);
   const [item, setItem] = useState([]);
-  const [onClickId, setOnClickId] = useState();
 
   const cartItems = useSelector((state: RootState) => state.cart.cartItem);
   const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
@@ -42,17 +41,12 @@ function PendingPage() {
       });
   }, []);
 
-  const handleCardClick = (clickedId: any) => {
-    console.log("id", clickedId);
-    setOnClickId(clickedId);
-  };
-
   return (
     <div className="w-full flex items-center justify-center bg-gray-100 ">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <AdminCategories categories={categories} />
-        <AdminMiddleComponent onClickCard={handleCardClick} />
-        <AdminOrder onClickCard={onClickId} />
+        <AdminMiddleComponent />
+        <AdminOrder />
       </div>
     </div>
   );
