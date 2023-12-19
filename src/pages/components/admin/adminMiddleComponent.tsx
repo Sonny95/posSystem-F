@@ -3,18 +3,36 @@ import TimeComponent from "../general/timeComponent";
 import AdminOrderHistory from "./adminOrderHistory";
 
 function AdminMiddleComponents() {
+  const [selectedstatus, setSelectedstatus] = useState("pending");
+
+  const handlePendingClick = () => {
+    setSelectedstatus("Pending");
+    console.log(selectedstatus, "Pending?");
+  };
+
+  const handleCompletedClick = () => {
+    setSelectedstatus("Completed");
+    console.log(selectedstatus, "Completed?");
+  };
+
   return (
     <div>
       <div className="w-[509px] h-[95%] mx-[22px] overflow-y-visible overflow-x-hidden ">
         <TimeComponent />
         {/* menu button */}
         <div className="my-[30px] flex ">
-          <div className="w-[66px] h-[19px] cursor-pointer mr-[30px]">Pending</div>
-          <div className="w-[66px] h-[19px] cursor-pointer">Completed</div>
+          <button
+            onClick={handlePendingClick}
+            className="w-[66px] h-[19px] cursor-pointer mr-[30px]"
+          >
+            Pending
+          </button>
+          <button onClick={handleCompletedClick} className="w-[66px] h-[19px] cursor-pointer">
+            Completed
+          </button>
         </div>
-
         {/* card */}
-        <AdminOrderHistory />
+        <AdminOrderHistory selectedstatus={selectedstatus} />
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CompleteButton from "../admin/completeButton";
 import Link from "next/link";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -21,8 +20,8 @@ function AdminOrder() {
     return state.admin.adminId;
   });
 
-  const [cardClick, setCardClick] = useState();
   const [itemsData, setItemsData] = useState([]);
+  const [updateStatus, setUpdateStatus] = useState([]);
 
   useEffect(() => {
     axios
@@ -34,6 +33,24 @@ function AdminOrder() {
         console.error(error);
       });
   }, [updateId]);
+
+  const submitStatus = () => {
+    const requestData = {
+      status: "Completed",
+    };
+    console.log(requestData, "requestData");
+    axios
+      .post(`http://localhost:8080/updateStatus/${updateStatus}`, requestData)
+      .then((updateResponse) => {
+        console.log(updateResponse.status, "updateResponse.status");
+        if (updateResponse.status === 200) {
+          alert("updated");
+        }
+      })
+      .catch((statusError) => {
+        console.log(statusError);
+      });
+  };
 
   return (
     <div className="w-[309px] h-full p-[10px] mr-[16px] bg-white">
@@ -59,17 +76,19 @@ function AdminOrder() {
                 <p>{value?.qty}</p>
               </div>
             </div>
-
-            <input type="checkbox"></input>
           </div>
         ))}
       </div>
 
       {/* completeButton */}
       <div className=" w-[289px] h-[48px] bottom-0">
-        <Link href="/admin">
-          <CompleteButton />
-        </Link>
+        <button
+          onClick={submitStatus}
+          className="w-full h-full bg-gray-100 z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400"
+        >
+          <p>Complete</p>
+          <p>{">"} </p>
+        </button>
       </div>
     </div>
   );

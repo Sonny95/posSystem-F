@@ -52,7 +52,7 @@ function TimeComponent() {
   return (
     <div>
       <div className="h-[19px] flex">
-        <p style={{ fontWeight: "bold" }}> {currentDate}</p>
+        <p style={{ fontWeight: "bold mr-4" }}> {currentDate}</p>
         <p>{currentWeekDate}</p>
       </div>
     </div>

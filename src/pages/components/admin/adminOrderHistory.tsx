@@ -12,8 +12,11 @@ interface order {
   payment: string;
   totalQty: number;
 }
+interface AdminOrderHistoryProps {
+  selectedstatus: string;
+}
 
-function AdminOrderHistory({ value }: any) {
+function AdminOrderHistory({ selectedstatus }: AdminOrderHistoryProps) {
   const dispatch = useDispatch();
 
   const [totalPage, setTotalPage] = useState(1);
@@ -31,20 +34,19 @@ function AdminOrderHistory({ value }: any) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/adminOrder?page=${currentPage}`)
+      .get(`http://localhost:8080/adminOrder?page=${currentPage}&status=${selectedstatus}`)
       .then((response) => {
         setOrder(response.data.data.result);
         setTotalPage(response.data.data.totalPages);
-        console.log(response.data.data.result, "response.data.data.result");
-        console.log(response.data.data.totalPages, "response.data.totalPages");
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [currentPage]);
+  }, [currentPage, selectedstatus]);
 
   return (
     <div>
+      {/* hover */}
       {order?.map((value) => (
         <div
           key={value.id}
@@ -76,6 +78,7 @@ function AdminOrderHistory({ value }: any) {
           </div>
         </div>
       ))}
+
       <Pagination totalPage={totalPage} onPageChange={handlePageChange} />
     </div>
   );
