@@ -27,9 +27,6 @@ function PendingPage() {
   const [order, setOrder] = useState([]);
   const [item, setItem] = useState([]);
 
-  const cartItems = useSelector((state: RootState) => state.cart.cartItem);
-  const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
-
   useEffect(() => {
     axios
       .get("http://localhost:8080/adminCategories")

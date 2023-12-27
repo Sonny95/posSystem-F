@@ -29,7 +29,6 @@ function AdminOrderHistory({ selectedstatus }: AdminOrderHistoryProps) {
 
   const handleClick = (value: { id: any } | undefined) => {
     dispatch(updateId(value?.id));
-    console.log(value?.id, "???????");
   };
 
   useEffect(() => {

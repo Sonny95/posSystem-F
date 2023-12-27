@@ -1,4 +1,4 @@
-interface itemState {
+export interface itemState {
   cartItem: any[];
   cartQuantity: number;
   cartTotalPrice: number;
@@ -18,7 +18,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action: PayloadAction<{ id: number }>) {
-      console.log(current(state), "cartSlice");
       const itemIndex = state.cartItem.findIndex(
         (item: { id: number }) => item.id === action.payload.id
       );
@@ -52,7 +51,6 @@ export const cartSlice = createSlice({
       state.cartItem = [];
     },
     updateTotals(state, action) {
-      console.log(state.cartItem, "state.cartItem");
       let { total, quantity } = state.cartItem.reduce(
         (cartTotal, cartItem) => {
           const { price, cartQuantity } = cartItem;

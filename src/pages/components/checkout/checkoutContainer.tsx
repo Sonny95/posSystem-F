@@ -11,7 +11,7 @@ interface item {
 }
 
 function CheckoutContainer({
-  data,
+  data = { cartItems: [], cartQuantity: 0, cartTotalPrice: 0 },
 }: {
   data: { cartItems: item[]; cartQuantity: number; cartTotalPrice: number };
 }) {
@@ -26,7 +26,7 @@ function CheckoutContainer({
     { id: 1, name: "MasteCard", src: "/masterCard.svg" },
     { id: 2, name: "visa", src: "/visa.svg" },
     { id: 3, name: "american", src: "/american.svg" },
-    { id: 4, name: "discoverCard", src: "/discoverCard.svg" },
+    { id: 4, name: "discoverCard", src: "/github.png" },
   ];
 
   const onSubmit = () => {
@@ -38,12 +38,10 @@ function CheckoutContainer({
       items: cartItems,
       totalQty: cartQuantity,
     };
-    console.log(requestData, "requestData");
 
     axios
       .post("http://localhost:8080/order", requestData)
       .then((orderResponse) => {
-        console.log(orderResponse.status, "orderResponse.status");
         if (orderResponse.status === 200) {
           alert("Ordered successfully");
         }
@@ -61,8 +59,11 @@ function CheckoutContainer({
         </div>
 
         <div className="w-[377px] h-[90px] flex justify-between my-[30px]">
-          {PaymentList.map((value) => (
-            <div className="rounded-lg cursor-pointer ounded-lg w-[110px] h-[95px] bg-gray-400 flex  my-[20px] hover:bg-[#003049]">
+          {PaymentList?.map((value) => (
+            <div
+              key={value.id}
+              className="rounded-lg cursor-pointer ounded-lg w-[110px] h-[95px] bg-gray-400 flex  my-[20px] hover:bg-[#003049]"
+            >
               <div className="w-[112px] h-[90px] flex flex-col items-center justify-center">
                 <img src={value.src} className="w-[30px] h-[30px] " />
                 <p className="text-white">{value.name}</p>
@@ -73,8 +74,11 @@ function CheckoutContainer({
 
         <div className="w-[377px] h-[521px]">
           <div className="w-full h-[64px] flex justify-between ">
-            {CardPayment.map((value) => (
-              <div className="rounded-lg ounded-lg w-[86px] h-[64px] bg-white flex  my-[20px]">
+            {CardPayment?.map((value) => (
+              <div
+                key={value.id}
+                className="rounded-lg ounded-lg w-[86px] h-[64px] bg-white flex  my-[20px]"
+              >
                 <div className="w-[86px] h-[64px] flex flex-col items-center justify-center">
                   <img src={value.src} className="w-full " />
                 </div>

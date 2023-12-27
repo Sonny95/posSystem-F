@@ -11,11 +11,10 @@ interface item {
 type clicekdFunction = (event: any, value: any) => void;
 
 function Cart({ list, clicked }: { list: item[]; clicked: clicekdFunction }) {
-  console.log(list, "list of list");
   return (
     <div>
       {list?.map((value) => (
-        <div className="w-full flex  bg-white mb-[10px]">
+        <div key={value.id} className="w-full flex  bg-white mb-[10px]">
           <div className="w-2/12 h-[72px] flex justify-center items-center ">
             <img src="/burger.png" alt={value.src} className="w-[62.5px] h-[53.1px] " />
           </div>

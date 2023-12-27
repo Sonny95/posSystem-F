@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 
@@ -23,8 +25,11 @@ function AdminCategories({ categories }: categories) {
       </div>
       {/* categories container */}
       <div className="w-[80px] h-full  ml-[28px] ">
-        {categories.map((values) => (
-          <div className="rounded-lg cursor-pointer ounded-lg w-[80px] h-[80px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black">
+        {categories?.map((values) => (
+          <div
+            key={values.id}
+            className="rounded-lg cursor-pointer ounded-lg w-[80px] h-[80px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+          >
             <div className="w-[65px] h-[65px] flex flex-col items-center justify-center">
               <img src={values.src} className="w-[20px] h-[20px] mb-[10px]" />
               <p className="text-xxs">{values.name}</p>

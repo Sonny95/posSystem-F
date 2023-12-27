@@ -28,8 +28,11 @@ function Categories({ categories }: categoriesProps) {
       </div>
       {/* categories container */}
       <div className="w-[110px] h-full  mt-[10px] ml-4 ">
-        {categories.map((values) => (
-          <div className="rounded-lg cursor-pointer ounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black">
+        {categories?.map((values) => (
+          <div
+            key={values.id}
+            className="rounded-lg cursor-pointer ounded-lg w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+          >
             <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
               <img src={values.src} className="w-[30px] h-[30px]" />
               <p>{values.name}</p>

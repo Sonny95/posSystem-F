@@ -10,7 +10,7 @@ interface item {
 }
 
 function CheckoutMenuOrderContainer({
-  data,
+  data = { cartItems: [], cartTotalPrice: 0 },
 }: {
   data: { cartItems: item[]; cartTotalPrice: number };
 }) {

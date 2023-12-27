@@ -23,11 +23,14 @@ function AdminMiddleComponents() {
         <div className="my-[30px] flex ">
           <button
             onClick={handlePendingClick}
-            className="w-[66px] h-[19px] cursor-pointer mr-[30px]"
+            className="w-[66px] h-[20px] cursor-pointer mr-[30px] hover:font-bold"
           >
             Pending
           </button>
-          <button onClick={handleCompletedClick} className="w-[66px] h-[19px] cursor-pointer">
+          <button
+            onClick={handleCompletedClick}
+            className="w-[66px] h-[19px] cursor-pointer hover:font-bold"
+          >
             Completed
           </button>
         </div>

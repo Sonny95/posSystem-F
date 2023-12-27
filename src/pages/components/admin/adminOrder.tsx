@@ -7,6 +7,7 @@ interface Item {
   orderNumber: number;
   item: string;
   qty: number;
+  id: number;
 }
 
 interface idProps {
@@ -15,10 +16,7 @@ interface idProps {
 }
 
 function AdminOrder() {
-  const updateId = useSelector((state: idProps) => {
-    console.log(state.admin.adminId, "state.admin.adminId");
-    return state.admin.adminId;
-  });
+  const updateId = useSelector((state: idProps) => state.admin.adminId);
 
   const [itemsData, setItemsData] = useState([]);
   const [updateStatus, setUpdateStatus] = useState([]);
@@ -38,9 +36,8 @@ function AdminOrder() {
     const requestData = {
       status: "Completed",
     };
-    console.log(requestData, "requestData");
     axios
-      .post(`http://localhost:8080/updateStatus/${updateStatus}`, requestData)
+      .post(`http://localhost:8080/updateStatus/${updateId}`, requestData)
       .then((updateResponse) => {
         console.log(updateResponse.status, "updateResponse.status");
         if (updateResponse.status === 200) {
@@ -67,7 +64,7 @@ function AdminOrder() {
 
       <div className=" w-[289px] h-[559px] mt-[20px] overflow-y-visible overflow-x-hidden">
         {itemsData?.map((value: Item) => (
-          <div className="w-[289px] mb-[10px] flex justify-between">
+          <div key={value.id} className="w-[289px] mb-[10px] flex justify-between">
             <div className="w-[239px] justify-between flex">
               <div className="w-[184px]">
                 <p>{value?.item}</p>

@@ -13,9 +13,7 @@ export const adminSlice = createSlice({
   initialState,
   reducers: {
     updateId: (state, action: PayloadAction<number>) => {
-      console.log(current(state), "adminSlice");
       state.adminId = action.payload;
-      console.log(state.adminId, "state.adminId");
     },
   },
 });

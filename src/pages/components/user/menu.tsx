@@ -17,7 +17,7 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
       </div>
 
       <div className="w-[545px] h-[644px] flex flex-wrap">
-        {data.map((value) => (
+        {data?.map((value) => (
           <div
             onClick={() => {
               clicked(value);

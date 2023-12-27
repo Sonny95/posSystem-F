@@ -24,10 +24,7 @@ export default function Home() {
   const [foods, setFoods] = useState([]);
   const dispatch = useDispatch();
 
-  const cartItems = useSelector((state: RootState) => {
-    console.log(state, "cartItems");
-    return state.cart.cartItem;
-  });
+  const cartItems = useSelector((state: RootState) => state.cart.cartItem);
 
   const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
 
