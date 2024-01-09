@@ -94,27 +94,47 @@ function CheckoutContainer({
             ))}
           </div>
 
-          <div className=" w-full h-[267px] my-[30px] mb-20">
-            <p>Cardholder Name</p>
-            <input
-              placeholder="Cardholder Name"
-              className="w-full h-[50px] bg-gray-200 mb-[30px]"
-            ></input>
-            <p>Cardholder Number</p>
-            <input
-              placeholder="Cardholder Number"
-              className="w-full h-[50px] bg-gray-200 mb-[30px]"
-            ></input>
-            <div className="flex w-full">
-              <div className="mr-[20px]">
-                <p>Expiration Date</p>
-                <input placeholder="00/0000" className="w-[173.5px] h-[50px] bg-gray-200"></input>
-              </div>
+          <div className="w-full h-[267px] my-[30px] mb-20">
+            {selectedPaymentStatus === "Credit Card" ? (
               <div>
-                <p>CVV</p>
-                <input placeholder="CVV" className="w-[173.5px] h-[50px] bg-gray-200"></input>
+                <p>Cardholder Name</p>
+                <input
+                  placeholder="Cardholder Name"
+                  className="w-full h-[50px] bg-gray-200 mb-[30px]"
+                ></input>
+                <p>Cardholder Number</p>
+                <input
+                  placeholder="Cardholder Number"
+                  className="w-full h-[50px] bg-gray-200 mb-[30px]"
+                ></input>
+                <div className="flex w-full">
+                  <div className="mr-[20px]">
+                    <p>Expiration Date</p>
+                    <input
+                      placeholder="00/0000"
+                      className="w-[173.5px] h-[50px] bg-gray-200"
+                    ></input>
+                  </div>
+                  <div>
+                    <p>CVV</p>
+                    <input placeholder="CVV" className="w-[173.5px] h-[50px] bg-gray-200"></input>
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : selectedPaymentStatus === "Cash" ? (
+              <div className=" w-full flex justify-center flex-col items-center text-xl">
+                <img src="https://i.ibb.co/16LrbYj/icons8-cash-64.png" className="w-2/4 h-2/4" />
+                <p>The receiption will help you </p>
+              </div>
+            ) : selectedPaymentStatus === "Scanner" ? (
+              <div className=" w-full flex justify-center items-center">
+                <img
+                  className="h-2/3 w-2/3"
+                  src="https://i.ibb.co/njwspSb/Kakao-Talk-Photo-2024-01-09-20-08-47.jpg"
+                  alt="Your Image"
+                />
+              </div>
+            ) : null}
           </div>
 
           <div className="w-[377px] h-[43px]">
