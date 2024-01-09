@@ -10,13 +10,13 @@ interface item {
 
 type clicekdFunction = (event: any, value: any) => void;
 
-function Cart({ list, clicked }: { list: item[]; clicked: clicekdFunction }) {
+function Cart({ cartItems, clicked }: { cartItems: item[]; clicked: clicekdFunction }) {
   return (
     <div>
-      {list?.map((value) => (
+      {cartItems?.map((value) => (
         <div key={value.id} className="w-full flex  bg-white mb-[10px]">
           <div className="w-2/12 h-[72px] flex justify-center items-center ">
-            <img src="/burger.png" alt={value.src} className="w-[62.5px] h-[53.1px] " />
+            <img src={value.src} alt={value.src} className="w-[62.5px] h-[53.1px] " />
           </div>
           <div className="w-10/12 h-[90px] flex my-[20px] px-[10px] ">
             <div className="w-full h-[90px] text-[13px] ">

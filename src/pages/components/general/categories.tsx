@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface burger {
   id: number;
@@ -13,12 +14,13 @@ interface categoriesProps {
 
 function Categories({ categories }: categoriesProps) {
   return (
-    // x/4 헸음 마진
     <div className="w-[126px] h-full flex flex-col">
-      <div className="w-[110px] h-[24px] mt-[20px] flex ml-4">
-        <img src="/arrow-left.png" className="w-[24px] h-[24px]" />
-        <p> Back</p>
-      </div>
+      <Link href="/">
+        <div className="w-[110px] h-[24px] mt-[20px] flex ml-4 cursor-pointer">
+          <img src="/arrow-left.png" className="w-[24px] h-[24px]" />
+          <p> Back</p>
+        </div>
+      </Link>
       {/* Logo container */}
       <div className="w-[102px] h-[102px] mt-[10px] ml-4 flex flex-col items-center justify-center">
         <img

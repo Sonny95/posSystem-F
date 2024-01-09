@@ -41,7 +41,7 @@ function MenuOrderContainer({ cartItems, cartTotalPrice, clicked }: MenuOrderCon
       {/* will delete below codes after redux */}
 
       <div className=" w-[289px] h-[607px] mt-[20px] overflow-y-visible overflow-x-hidden">
-        <Cart list={cartItems} clicked={clicked} />
+        <Cart cartItems={cartItems} clicked={clicked} />
         <div className="h-[10px] w-full bg-gray-100"></div>
       </div>
       {/* 페이벗튼 */}

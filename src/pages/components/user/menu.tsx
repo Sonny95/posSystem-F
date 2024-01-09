@@ -15,7 +15,6 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
       <div className="h-[40px] w-[545px] my-[30px] ">
         <input placeholder="Search" className="w-[525px] h-full rounded-lg p-5 mx-[10px]"></input>{" "}
       </div>
-
       <div className="w-[545px] h-[644px] flex flex-wrap">
         {data?.map((value) => (
           <div

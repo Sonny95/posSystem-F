@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PayButton from "../user/payButton";
 import axios from "axios";
 
@@ -28,6 +28,13 @@ function CheckoutContainer({
     { id: 3, name: "american", src: "/american.svg" },
     { id: 4, name: "discoverCard", src: "/github.png" },
   ];
+
+  const [selectedPaymentStatus, setselectedPaymentStatus] = useState("Credit Card");
+
+  const handlePaymentClick = (paymentType: React.SetStateAction<string>) => {
+    setselectedPaymentStatus(paymentType);
+    console.log(selectedPaymentStatus, paymentType + "?");
+  };
 
   const onSubmit = () => {
     const currentTime = new Date().toISOString();
@@ -61,6 +68,7 @@ function CheckoutContainer({
         <div className="w-[377px] h-[90px] flex justify-between my-[30px]">
           {PaymentList?.map((value) => (
             <div
+              onClick={() => handlePaymentClick(value.name)}
               key={value.id}
               className="rounded-lg cursor-pointer ounded-lg w-[110px] h-[95px] bg-gray-400 flex  my-[20px] hover:bg-[#003049]"
             >
