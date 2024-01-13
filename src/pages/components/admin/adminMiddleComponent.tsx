@@ -7,12 +7,10 @@ function AdminMiddleComponents() {
 
   const handlePendingClick = () => {
     setSelectedstatus("Pending");
-    console.log(selectedstatus, "Pending?");
   };
 
   const handleCompletedClick = () => {
     setSelectedstatus("Completed");
-    console.log(selectedstatus, "Completed?");
   };
 
   return (

@@ -33,7 +33,6 @@ function CheckoutContainer({
 
   const handlePaymentClick = (paymentType: React.SetStateAction<string>) => {
     setselectedPaymentStatus(paymentType);
-    console.log(selectedPaymentStatus, paymentType + "?");
   };
 
   const onSubmit = () => {
@@ -110,10 +109,7 @@ function CheckoutContainer({
                 <div className="flex w-full">
                   <div className="mr-[20px]">
                     <p>Expiration Date</p>
-                    <input
-                      placeholder="00/0000"
-                      className="w-[173.5px] h-[50px] bg-gray-200"
-                    ></input>
+                    <input placeholder="00/00" className="w-[173.5px] h-[50px] bg-gray-200"></input>
                   </div>
                   <div>
                     <p>CVV</p>
