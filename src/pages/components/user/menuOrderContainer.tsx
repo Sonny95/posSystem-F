@@ -42,7 +42,6 @@ function MenuOrderContainer({ cartItems, cartTotalPrice, clicked }: MenuOrderCon
 
       <div className=" w-[289px] h-[607px] mt-[20px] overflow-y-visible overflow-x-hidden">
         <Cart cartItems={cartItems} clicked={clicked} />
-        <div className="h-[10px] w-full bg-gray-100"></div>
       </div>
       {/* 페이벗튼 */}
       <Link href="/checkout">
