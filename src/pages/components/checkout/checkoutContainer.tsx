@@ -46,7 +46,7 @@ function CheckoutContainer({
     };
 
     axios
-      .post("http://localhost:8080/order", requestData)
+      .post("http://3.27.213.97:8080/order", requestData)
       .then((orderResponse) => {
         if (orderResponse.status === 200) {
           alert("Ordered successfully");

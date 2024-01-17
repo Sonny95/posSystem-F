@@ -33,7 +33,7 @@ function AdminOrderHistory({ selectedstatus }: AdminOrderHistoryProps) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/adminOrder?page=${currentPage}&status=${selectedstatus}`)
+      .get(`http://3.27.213.97:8080/adminOrder?page=${currentPage}&status=${selectedstatus}`)
       .then((response) => {
         setOrder(response.data.data.result);
         setTotalPage(response.data.data.totalPages);

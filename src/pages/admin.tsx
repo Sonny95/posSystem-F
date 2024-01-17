@@ -29,7 +29,7 @@ function PendingPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/adminCategories")
+      .get("http://3.27.213.97:8080/adminCategories")
       .then((response) => {
         setCategories(response.data);
       })
