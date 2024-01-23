@@ -10,7 +10,7 @@ export default (req, res) => {
       ? "WHERE status = 'Pending' OR status IS NULL"
       : "WHERE status = 'Completed'";
 
-  // 먼저 전체 아이템에서 펜딩인지 컴플리트인지 거르기
+  // 먼저 전체 아이템에서 펜딩인지 컴플리트인지 거르기sd
   connection.query(
     `SELECT COUNT(*) as totalCount FROM \`order\` ${whereClause}`,
     (err, countResult) => {
