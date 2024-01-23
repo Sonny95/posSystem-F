@@ -1,7 +1,10 @@
 import connection from "./../db";
 
 export default (req, res) => {
+  console.log(req.params, "req");
+  //TODO dynamic API changed it to query.
   const orderId = req.params.updateId;
+  console.log(req.body, "req.body");
   const newStatus = req.body.status;
 
   const updateStatusQuery = "UPDATE `order` SET status = ? WHERE id = ?";
