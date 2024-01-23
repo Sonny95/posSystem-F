@@ -22,7 +22,7 @@ function AdminOrder() {
 
   useEffect(() => {
     axios
-      .get(`https://3.27.213.97:8080/adminOrderDetail/${updateId}`)
+      .get(`/api/adminOrderDetail/${updateId}`)
       .then((response) => {
         setItemsData(response.data);
       })
@@ -36,7 +36,7 @@ function AdminOrder() {
       status: "Completed",
     };
     axios
-      .post(`https://3.27.213.97:8080/updateStatus/${updateId}`, requestData)
+      .post(`/api/updateStatus/${updateId}`, requestData)
       .then((updateResponse) => {
         console.log(updateResponse.status, "updateResponse.status");
         if (updateResponse.status === 200) {

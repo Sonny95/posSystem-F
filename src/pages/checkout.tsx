@@ -24,7 +24,7 @@ function checkout() {
 
   useEffect(() => {
     axios
-      .get("https://3.27.213.97:8080/categories")
+      .get("/api/categories")
       .then((response) => {
         setCategories(response.data);
       })

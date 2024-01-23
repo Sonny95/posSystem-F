@@ -30,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("https://3.27.213.97:8080/categories")
+      .get("/api/categories")
       .then((response) => {
         setCategories(response.data);
       })
@@ -41,7 +41,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("https://3.27.213.97:8080/foods")
+      .get("/api/foods")
       .then((response) => {
         setFoods(response.data);
       })
