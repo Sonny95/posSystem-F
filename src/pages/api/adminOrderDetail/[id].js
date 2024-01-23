@@ -1,4 +1,4 @@
-import connection from "./../db";
+import connection from "../db";
 
 export default (req, res) => {
   const orderId = req.params.id;
