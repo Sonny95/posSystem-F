@@ -1,8 +1,10 @@
 import connection from "../db";
 
 export default (req, res) => {
-  const orderId = req.params.updateId;
+  const orderId = req.query.updateId;
+  console.log(orderId, "orderId");
   const newStatus = req.body.status;
+  console.log(newStatus, "newStatus");
 
   const updateStatusQuery = "UPDATE `order` SET status = ? WHERE id = ?";
   const updateStatusValues = [newStatus, orderId];

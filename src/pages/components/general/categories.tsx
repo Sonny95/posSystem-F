@@ -15,10 +15,10 @@ interface categoriesProps {
 function Categories({ categories }: categoriesProps) {
   return (
     <div className="w-[126px] h-full flex flex-col">
-      <Link href="/">
+      <Link href="/admin">
         <div className="w-[110px] h-[24px] mt-[20px] flex ml-4 cursor-pointer">
-          <img src="/arrow-left.png" className="w-[24px] h-[24px]" />
-          <p> Back</p>
+          <img src="menuButton.png" className="w-[24px] h-[24px] mr-[4px]" />
+          <p> Admin</p>
         </div>
       </Link>
       {/* Logo container */}

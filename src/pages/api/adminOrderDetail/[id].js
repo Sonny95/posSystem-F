@@ -1,8 +1,7 @@
 import connection from "../db";
 
 export default (req, res) => {
-  const orderId = req.params.id;
-
+  const orderId = req.query.id;
   connection.query("SELECT * FROM orderItems WHERE orderNumber = ?", [orderId], (err, result) => {
     if (err) {
       console.error(err);
