@@ -15,7 +15,7 @@ interface categoriesProps {
 function Categories({ categories }: categoriesProps) {
   return (
     <div className="w-[126px] h-full flex flex-col">
-      <Link href="/admin">
+      <Link href="/login">
         <div className="w-[110px] h-[24px] mt-[20px] flex ml-4 cursor-pointer">
           <img src="menuButton.png" className="w-[24px] h-[24px] mr-[4px]" />
           <p> Admin</p>
