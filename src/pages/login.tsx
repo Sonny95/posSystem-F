@@ -6,7 +6,7 @@ function Login() {
   const [credentials, setCredentials] = useState({ code: "", password: "" });
   const router = useRouter();
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setCredentials((prevState) => ({
       ...prevState,
@@ -14,7 +14,7 @@ function Login() {
     }));
   };
 
-  const login = async (e) => {
+  const login = async (e: any) => {
     e.preventDefault();
     const response = await signIn("code-password-credential", {
       code: credentials.code,
