@@ -6,6 +6,8 @@ import axios from "axios";
 import AdminCategories from "./components/admin/adminCategories";
 import AdminMiddleComponent from "./components/admin/adminMiddleComponent";
 import AdminOrder from "./components/admin/adminOrder";
+import { GetServerSideProps } from "next";
+import { getSession, signIn } from "next-auth/react";
 
 interface RootState {
   cart: {
@@ -21,8 +23,12 @@ interface result {
   payment: string;
   totalQty: number;
 }
+interface MyPageProps {
+  session: any; // 사용자 세션 정보의 타입에 따라 수정해야 함
+}
 
-function PendingPage() {
+function PendingPage({ session }: MyPageProps) {
+  console.log(session, "session");
   const [categories, setCategories] = useState([]);
   const [order, setOrder] = useState([]);
   const [item, setItem] = useState([]);
@@ -50,3 +56,13 @@ function PendingPage() {
 }
 
 export default PendingPage;
+
+export const getServerSideProps: GetServerSideProps<MyPageProps> = async (context) => {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session,
+    },
+  };
+};

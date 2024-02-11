@@ -22,6 +22,7 @@ interface RootState {
 export default function Home() {
   const [categories, setCategories] = useState([]);
   const [foods, setFoods] = useState([]);
+
   const dispatch = useDispatch();
 
   const cartItems = useSelector((state: RootState) => state.cart.cartItem);

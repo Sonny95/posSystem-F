@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
+import axios from "axios";
+import router from "next/router";
 
 interface HookFormTypes {
   code: number;
@@ -15,81 +16,95 @@ function Signup() {
   const {
     register,
     formState: { errors },
+    watch,
     handleSubmit,
-  } = useForm<HookFormTypes>({
-    criteriaMode: "all",
-  });
-  const onSubmit = (data: HookFormTypes) => console.log(data);
+  } = useForm<HookFormTypes>({ mode: "onChange" });
+
+  const onSubmit = (data: HookFormTypes) => {
+    console.log(onSubmit, "onsubmit");
+
+    const sendData = {
+      code: data.code,
+      name: data.name,
+      password: data.password,
+    };
+    console.log(sendData, "send");
+    axios
+      .post("/api/createUser", sendData)
+      .then((updateResponse) => {
+        console.log(updateResponse.status, "updateResponse.status");
+        if (updateResponse.status === 200) {
+          alert("User created successfully");
+          router.push("/admin");
+        }
+      })
+      .catch((statusError) => {
+        console.log(statusError);
+      });
+    console.log(data, "data");
+  };
 
   return (
     <div>
       <div className="w-full h-full flex items-center justify-center bg-gray-100">
         <div className="w-[500px] h-[744px] bg-gray-100 flex flex-col items-center justify-center">
           <img src="logo.png" className="mb-[30px]" />
+
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-[5px] text-2xg">Business Code</div>
             <input
-              {...register("code", { required: true, maxLength: 10 })}
-              name="code"
+              id="code"
+              {...register("code", {
+                minLength: { value: 4, message: "Business code must be at least 4 charaters" },
+                maxLength: { value: 8, message: "Business code is maximum 8 charaters" },
+              })}
               placeholder="1234"
-              className="w-[250px] h-[50px] bg-gray-200 mb-[30px] rounded-lg"
+              className="w-[250px] h-[50px] bg-gray-200 rounded-lg"
             ></input>
-            <div className="mb-[5px] text-2xg">Staff Name</div>
-            <input
-              {...register("name", { required: true, maxLength: 16 })}
-              name="name"
-              placeholder="Mia Son"
-              className="w-[250px] h-[50px] bg-gray-200 mb-[30px] rounded-lg"
-            ></input>
-            <div className="mb-[5px] text-2xg">Password</div>
-            <input
-              {...register("password", {
-                required: true,
-                minLength: {
-                  value: 16,
-                  message: "Password should be 8-16 numbers.",
-                },
-                maxLength: {
-                  value: 16,
-                  message: "Password should be 8-16 numbers.",
-                },
-              })}
-              name="password"
-              placeholder="8-16 numbers only "
-              className="w-[250px] h-[50px] bg-gray-200 mb-[30px] rounded-lg"
-            ></input>
-            <ErrorMessage
-              errors={errors}
-              name="password"
-              render={({ messages }) =>
-                messages &&
-                Object.entries(messages).map(([type, message]) => <p key={type}>{message}</p>)
-              }
-            />
-            <div className="mb-[5px] text-2xg">Confirm Password</div>
-            <input
-              {...register("password", {
-                validate: (value) => value === "1" || "Confirm Your Email",
-              })}
-              name="confirm password"
-              placeholder="ConfirmPassword"
-              className="w-[250px] h-[50px] bg-gray-200 mb-[30px] rounded-lg"
-            ></input>
-            <ErrorMessage
-              errors={errors}
-              name="confirmPassword"
-              render={({ messages }) =>
-                messages &&
-                Object.entries(messages).map(([type, message]) => <p key={type}>{message}</p>)
-              }
-            />
-          </form>
+            <p>{errors.code?.message}</p>
 
-          <Link href={"/admin"}>
-            <button className="w-[250px] h-[50px] bg-[#003049] z-10 text-white rounded-lg px-6 ">
+            <div className="mb-[5px] text-2xg mt-[30px]">Staff Name</div>
+            <input
+              {...register("name", { required: { value: true, message: "Name is required" } })}
+              id="name"
+              placeholder="Mia Son"
+              className="w-[250px] h-[50px] bg-gray-200 rounded-lg"
+            ></input>
+
+            <div className="mb-[5px] text-2xg mt-[30px]">Password</div>
+            <input
+              id="password"
+              {...register("password", {
+                minLength: { value: 8, message: "Password must be 8-16 charaters" },
+                maxLength: { value: 16, message: "Password must be 8-16 charaters" },
+              })}
+              placeholder="8-16 numbers only "
+              type="password"
+              className="w-[250px] h-[50px] bg-gray-200 rounded-lg"
+            ></input>
+            <p>{errors.password?.message}</p>
+
+            <div className="mb-[5px] text-2xg mt-[30px]">Confirm Password</div>
+            <input
+              {...register("confirmPassword", {
+                validate: (value) => value === watch("password") || "Must be matched",
+              })}
+              id="confirmPassword"
+              placeholder="ConfirmPassword"
+              type="password"
+              className="w-[250px] h-[50px] bg-gray-200 rounded-lg"
+            ></input>
+            <p>{errors.confirmPassword?.message}</p>
+
+            {/* <Link href={"/admin"}> */}
+            <button
+              type="submit"
+              className="w-[250px] h-[50px] bg-[#003049] z-10 text-white rounded-lg px-6 mt-[30px]"
+            >
               Login
             </button>
-          </Link>
+          </form>
+          {/* </Link> */}
         </div>
       </div>
     </div>
