@@ -39,7 +39,6 @@ function CheckoutMenuOrderContainer({
   const dispatch = useDispatch();
 
   const clicked: clicekdFunction = (event, value) => {
-    console.log("Clicked:", event, value);
     if (event === "-") {
       dispatch(decreasmentQuantity(value));
     } else if (event === "+") {

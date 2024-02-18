@@ -12,7 +12,7 @@ interface HookFormTypes {
   multipleErrorInput: string;
 }
 
-function Signup() {
+function SignsUp() {
   const {
     register,
     formState: { errors },
@@ -101,7 +101,7 @@ function Signup() {
               type="submit"
               className="w-[250px] h-[50px] bg-[#003049] z-10 text-white rounded-lg px-6 mt-[30px]"
             >
-              Login
+              Signs Up
             </button>
           </form>
           {/* </Link> */}
@@ -111,4 +111,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SignsUp;

@@ -59,9 +59,9 @@ function Categories({ categories }: categoriesProps) {
                 Log In
               </button>
             </Link>
-            <Link href={"/signup"}>
+            <Link href={"/signsUp"}>
               <button className="w-[250px] h-[50px] bg-[#003049]  hover:font-bold text-white rounded-lg px-6 ">
-                Sign Up
+                Signs Up
               </button>
             </Link>
           </div>
