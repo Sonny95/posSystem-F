@@ -93,7 +93,7 @@ function Categories({ categories }: categoriesProps) {
       <div className="w-[110px] h-full  mt-[10px] ml-4 ">
         {loading
           ? // Skeleton
-            Array.from({ length: 4 }).map((_, index) => (
+            Array.from({ length: 5 }).map((_, index) => (
               <div
                 key={index}
                 className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
