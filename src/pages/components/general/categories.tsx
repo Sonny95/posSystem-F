@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Modal from "react-modal";
 import Link from "next/link";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 interface burger {
   id: number;
@@ -54,8 +56,12 @@ function Categories({ categories }: categoriesProps) {
           <div className="w-[400px] h-[300px] bg-gray-200 flex flex-col items-center justify-center rounded-lg">
             <img src="logo.png" className="mb-[30px]" />
 
+            {/* TODO */}
             <Link href={"/login"}>
-              <button className="w-[250px] h-[50px] bg-[#003049] hover:font-bold text-white rounded-lg px-6 mb-[30px]">
+              <button
+                // onClick={() => signIn("credentials")}
+                className="w-[250px] h-[50px] bg-[#003049] hover:font-bold text-white rounded-lg px-6 mb-[30px]"
+              >
                 Log In
               </button>
             </Link>
@@ -84,7 +90,8 @@ function Categories({ categories }: categoriesProps) {
           >
             <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
               <img src={values.src} className="w-[30px] h-[30px]" />
-              <p>{values.name}</p>
+
+              <p>{values.name || <Skeleton />}</p>
             </div>
           </div>
         ))}
