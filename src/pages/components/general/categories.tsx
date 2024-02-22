@@ -42,7 +42,7 @@ function Categories({ categories }: categoriesProps) {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    });
+    }, 4000);
   }, []);
 
   return (
