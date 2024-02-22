@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Modal from "react-modal";
 import Link from "next/link";
@@ -36,6 +36,14 @@ function Categories({ categories }: categoriesProps) {
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <div className="w-[126px] h-full flex flex-col">
@@ -83,18 +91,31 @@ function Categories({ categories }: categoriesProps) {
       </div>
       {/* categories container */}
       <div className="w-[110px] h-full  mt-[10px] ml-4 ">
-        {categories?.map((values) => (
-          <div
-            key={values.id}
-            className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
-          >
-            <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
-              <img src={values.src} className="w-[30px] h-[30px]" />
-
-              <p>{values.name || <Skeleton />}</p>
-            </div>
-          </div>
-        ))}
+        {loading
+          ? // Skeleton
+            Array.from({ length: 4 }).map((_, index) => (
+              <div
+                key={index}
+                className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+              >
+                <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
+                  <Skeleton width={30} height={30} />
+                  <Skeleton height={20} width="80%" />
+                </div>
+              </div>
+            ))
+          : // after loading
+            categories?.map((values) => (
+              <div
+                key={values.id}
+                className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+              >
+                <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
+                  <img src={values.src} className="w-[30px] h-[30px]" />
+                  <p>{values.name}</p>
+                </div>
+              </div>
+            ))}
       </div>
     </div>
   );
