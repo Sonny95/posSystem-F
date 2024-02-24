@@ -39,11 +39,14 @@ function Categories({ categories }: categoriesProps) {
 
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
-  }, []);
+  // TODO
+  // useEffect(() => {
+  //     if(
+  //       categories
+  //     )
+  //     setLoading(false);
+
+  // }, []);
 
   return (
     <div className="w-[126px] h-full flex flex-col">
