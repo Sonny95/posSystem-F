@@ -39,15 +39,11 @@ function Categories({ categories }: categoriesProps) {
 
   const [loading, setLoading] = useState(true);
 
-  // TODO
-  // useEffect(() => {
-  //     if(
-  //       categories
-  //     )
-  //     setLoading(false);
-
-  // }, []);
-
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    });
+  }, []);
   return (
     <div className="w-[126px] h-full flex flex-col">
       <div className="w-[110px] h-[24px] mt-[20px] flex ml-4 cursor-pointer">

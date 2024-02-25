@@ -15,7 +15,7 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    });
   }, []);
 
   return (
