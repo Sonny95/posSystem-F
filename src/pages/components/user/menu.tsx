@@ -26,7 +26,7 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
       </div>
 
       <div className="w-[545px] h-[644px] flex flex-wrap">
-        {loading
+        {/* {loading
           ? // 로딩 중일 때 스켈레톤 표시
             Array.from({ length: 9 }).map((_, index) => (
               <div key={index} className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer">
@@ -35,20 +35,20 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
                 <Skeleton width="60%" height={20} style={{ margin: "auto", marginTop: "8px" }} />
               </div>
             ))
-          : // 데이터 로드 후 실제 내용 표시
-            data?.map((value) => (
-              <div
-                key={value.id}
-                onClick={() => clicked(value)}
-                className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer	"
-              >
-                <div className="w-[122px] h-[122px] my-0 mx-auto mt-4 flex items-center justify-center">
-                  <img src={value.src} className="w-[105.92px] h-[90px]" />
-                </div>
-                <p className="text-center my-2">${value.price}</p>
-                <p className="font-bold text-center text-m">{value.name}</p>
-              </div>
-            ))}
+          : // 데이터 로드 후 실제 내용 표시 */}
+        {data?.map((value) => (
+          <div
+            key={value.id}
+            onClick={() => clicked(value)}
+            className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer	"
+          >
+            <div className="w-[122px] h-[122px] my-0 mx-auto mt-4 flex items-center justify-center">
+              <img src={value.src} className="w-[105.92px] h-[90px]" />
+            </div>
+            <p className="text-center my-2">${value.price}</p>
+            <p className="font-bold text-center text-m">{value.name}</p>
+          </div>
+        ))}
         <div className="bg-gray-100 w-full h-2.5"></div>
       </div>
     </div>
