@@ -4,6 +4,8 @@ import Modal from "react-modal";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 interface burger {
   id: number;
@@ -12,7 +14,7 @@ interface burger {
 }
 
 interface categoriesProps {
-  categories: burger[];
+  categoriesData: burger[];
 }
 
 const customStyles = {
@@ -26,7 +28,7 @@ const customStyles = {
   },
 };
 
-function Categories({ categories }: categoriesProps) {
+function Categories() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
@@ -46,6 +48,19 @@ function Categories({ categories }: categoriesProps) {
       setLoading(false);
     });
   }, []);
+
+  const {
+    isLoading: categoriesLoading,
+    error: categoriesError,
+    data: categoriesData,
+  } = useQuery({
+    queryKey: ["categories"],
+    queryFn: () => axios.get("/api/categories").then((response) => response.data),
+  });
+
+  // checking the cashing data or error
+  if (categoriesLoading) return <div>Loading categories...</div>;
+  if (categoriesError) return <div>Error fetching categories</div>;
 
   return (
     <div className="w-[126px] h-full flex flex-col">
@@ -107,17 +122,32 @@ function Categories({ categories }: categoriesProps) {
               </div>
             ))
           : // after loading
-            categories?.map((values) => (
-              <div
-                key={values.id}
-                className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
-              >
-                <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
-                  <img src={values.src} className="w-[30px] h-[30px]" />
-                  <p>{values.name}</p>
+            categoriesData?.map(
+              (values: {
+                id: React.Key | null | undefined;
+                src: string | undefined;
+                name:
+                  | string
+                  | number
+                  | boolean
+                  | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+                  | Iterable<React.ReactNode>
+                  | React.ReactPortal
+                  | React.PromiseLikeOfReactNode
+                  | null
+                  | undefined;
+              }) => (
+                <div
+                  key={values.id}
+                  className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+                >
+                  <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
+                    <img src={values.src} className="w-[30px] h-[30px]" />
+                    <p>{values.name}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
       </div>
     </div>
   );

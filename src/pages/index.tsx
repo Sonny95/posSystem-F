@@ -11,7 +11,7 @@ import {
   updateTotals,
 } from "../modules/cartSlice";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
 
 interface RootState {
   cart: {
@@ -21,7 +21,6 @@ interface RootState {
 }
 
 export default function Home() {
-  const [categories, setCategories] = useState([]);
   const [foods, setFoods] = useState([]);
 
   const dispatch = useDispatch();
@@ -29,27 +28,6 @@ export default function Home() {
   const cartItems = useSelector((state: RootState) => state.cart.cartItem);
 
   const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
-
-  //need to change fetch to axios
-  const { isLoading, error, data, isFetching } = useQuery({
-    queryKey: ["categories"],
-    queryFn: async () => {
-      const response = await fetch("/api/categories");
-      const data = await response.json();
-      return data;
-    },
-  });
-
-  // useEffect(() => {
-  //   axios
-  //     .get("/api/categories")
-  //     .then((response) => {
-  //       setCategories(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
 
   useEffect(() => {
     axios
@@ -70,7 +48,7 @@ export default function Home() {
   return (
     <div className="w-full h-screen flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
-        <Categories categories={categories} />
+        <Categories />
         <Menu
           data={foods}
           clicked={(value: any) => {
