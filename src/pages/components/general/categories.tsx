@@ -26,6 +26,7 @@ const customStyles = {
 
 function Categories() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const openModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -35,9 +36,6 @@ function Categories() {
     setModalIsOpen(false);
   };
 
-  //skeleton loading
-  const [loading, setLoading] = useState(true);
-
   //if data received, false
   useEffect(() => {
     setTimeout(() => {
@@ -45,17 +43,12 @@ function Categories() {
     });
   }, []);
 
-  const {
-    isLoading: categoriesLoading,
-    error: categoriesError,
-    data: categoriesData,
-  } = useQuery({
+  const { error: categoriesError, data: categoriesData } = useQuery({
     queryKey: ["categories"],
     queryFn: () => axios.get("/api/categories").then((response) => response.data),
   });
 
   // checking the cashing data or error
-  if (categoriesLoading) return <div>Loading categories...</div>;
   if (categoriesError) return <div>Error fetching categories</div>;
 
   return (
