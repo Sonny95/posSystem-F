@@ -11,6 +11,7 @@ import {
   updateTotals,
 } from "../modules/cartSlice";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 interface RootState {
   cart: {
@@ -29,16 +30,26 @@ export default function Home() {
 
   const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
 
-  useEffect(() => {
-    axios
-      .get("/api/categories")
-      .then((response) => {
-        setCategories(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  //need to change fetch to axios
+  const { isLoading, error, data, isFetching } = useQuery({
+    queryKey: ["categories"],
+    queryFn: async () => {
+      const response = await fetch("/api/categories");
+      const data = await response.json();
+      return data;
+    },
+  });
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/categories")
+  //     .then((response) => {
+  //       setCategories(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   useEffect(() => {
     axios
