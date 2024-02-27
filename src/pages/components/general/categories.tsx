@@ -7,14 +7,10 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useQuery } from "react-query";
 import axios from "axios";
 
-interface burger {
+interface categoreis {
   id: number;
   name: string;
   src: string;
-}
-
-interface categoriesProps {
-  categoriesData: burger[];
 }
 
 const customStyles = {
