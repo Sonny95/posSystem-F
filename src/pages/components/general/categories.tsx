@@ -37,11 +37,11 @@ function Categories() {
   };
 
   //if data received, false
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    });
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   });
+  // }, []);
 
   const {
     error: categoriesError,
