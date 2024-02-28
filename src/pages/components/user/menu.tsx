@@ -31,8 +31,6 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
             Array.from({ length: 9 }).map((_, index) => (
               <div key={index} className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer">
                 <Skeleton width={105.92} height={90} style={{ margin: "auto" }} />
-                <Skeleton width="80%" height={20} style={{ margin: "auto", marginTop: "8px" }} />
-                <Skeleton width="60%" height={20} style={{ margin: "auto", marginTop: "8px" }} />
               </div>
             ))
           : // 데이터 로드 후 실제 내용 표시
