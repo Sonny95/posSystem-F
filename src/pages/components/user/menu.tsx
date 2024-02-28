@@ -13,10 +13,10 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    if (data && data.length > 0) {
       setLoading(false);
-    });
-  }, []);
+    }
+  }, [data]);
 
   return (
     <div className="w-[545px] h-full mx-[22px] overflow-y-visible overflow-x-hidden">
