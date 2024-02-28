@@ -43,7 +43,11 @@ function Categories() {
     });
   }, []);
 
-  const { error: categoriesError, data: categoriesData } = useQuery({
+  const {
+    error: categoriesError,
+    data: categoriesData,
+    isLoading,
+  } = useQuery({
     queryKey: ["categories"],
     queryFn: () => axios.get("/api/categories").then((response) => response.data),
   });
@@ -97,7 +101,7 @@ function Categories() {
       </div>
       {/* categories container */}
       <div className="w-[110px] h-full  mt-[10px] ml-4 ">
-        {loading
+        {isLoading
           ? // Skeleton
             Array.from({ length: 5 }).map((_, index) => (
               <div
