@@ -7,7 +7,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useQuery } from "react-query";
 import axios from "axios";
 
-interface categoreis {
+interface categories {
   id: number;
   name: string;
   src: string;
@@ -111,32 +111,17 @@ function Categories() {
               </div>
             ))
           : // after loading
-            categoriesData?.map(
-              (values: {
-                id: React.Key | null | undefined;
-                src: string | undefined;
-                name:
-                  | string
-                  | number
-                  | boolean
-                  | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-                  | Iterable<React.ReactNode>
-                  | React.ReactPortal
-                  | React.PromiseLikeOfReactNode
-                  | null
-                  | undefined;
-              }) => (
-                <div
-                  key={values.id}
-                  className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
-                >
-                  <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
-                    <img src={values.src} className="w-[30px] h-[30px]" />
-                    <p>{values.name}</p>
-                  </div>
+            categoriesData?.map((values: categories) => (
+              <div
+                key={values.id}
+                className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+              >
+                <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
+                  <img src={values.src} className="w-[30px] h-[30px]" />
+                  <p>{values.name}</p>
                 </div>
-              )
-            )}
+              </div>
+            ))}
       </div>
     </div>
   );
