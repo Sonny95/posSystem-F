@@ -61,7 +61,7 @@ function CheckoutMenuOrderContainer({
             }}
             className="mr-2 h-[20px] ml-auto cursor-pointer"
           >
-            x
+            Delete All
           </button>
         </div>
 

@@ -36,13 +36,6 @@ function Categories() {
     setModalIsOpen(false);
   };
 
-  //if data received, false
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   });
-  // }, []);
-
   const {
     error: categoriesError,
     data: categoriesData,
@@ -83,7 +76,7 @@ function Categories() {
                 Log In
               </button>
             </Link>
-            <Link href={"/signsUp"}>
+            <Link href={"/signup"}>
               <button className="w-[250px] h-[50px] bg-[#003049]  hover:font-bold text-white rounded-lg px-6 ">
                 Signs Up
               </button>
