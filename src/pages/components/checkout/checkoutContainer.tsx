@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PayButton from "../user/payButton";
 import axios from "axios";
+import router from "next/router";
 
 interface item {
   id: number;
@@ -50,6 +51,7 @@ function CheckoutContainer({
       .then((orderResponse) => {
         if (orderResponse.status === 200) {
           alert("Ordered successfully");
+          router.push("/");
         }
       })
       .catch((orderError) => {
