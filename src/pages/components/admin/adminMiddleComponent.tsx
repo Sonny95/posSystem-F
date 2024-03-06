@@ -3,7 +3,7 @@ import TimeComponent from "../general/timeComponent";
 import AdminOrderHistory from "./adminOrderHistory";
 
 function AdminMiddleComponents() {
-  const [selectedstatus, setSelectedstatus] = useState("pending");
+  const [selectedstatus, setSelectedstatus] = useState("Pending");
 
   const handlePendingClick = () => {
     setSelectedstatus("Pending");
@@ -21,13 +21,21 @@ function AdminMiddleComponents() {
         <div className="my-[30px] flex ">
           <button
             onClick={handlePendingClick}
-            className="w-[90px] h-[35px] cursor-pointer mr-[30px] hover:font-bold rounded-lg text-white bg-[#003049]"
+            className={`w-[90px] h-[35px] cursor-pointer mr-[30px] rounded-lg flex items-center justify-center text-black ${
+              selectedstatus === "Pending"
+                ? "bg-[#003049] text-white"
+                : "bg-white hover:bg-[#003049] hover:text-white"
+            }`}
           >
             Pending
           </button>
           <button
             onClick={handleCompletedClick}
-            className="w-[90px] h-[35px] cursor-pointer hover:font-bold rounded-lg text-white bg-[#003049]"
+            className={`w-[90px] h-[35px] cursor-pointer mr-[30px] rounded-lg flex items-center justify-center text-black ${
+              selectedstatus === "Completed"
+                ? "bg-[#003049] text-white"
+                : "bg-white hover:bg-[#003049] hover:text-white"
+            }`}
           >
             Completed
           </button>
