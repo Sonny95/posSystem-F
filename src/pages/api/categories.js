@@ -2,7 +2,7 @@ import connection from "./db";
 
 export default (req, res) => {
   connection.query("select * from categories", (err, result) => {
-    console.log("categories");
+    console.info("categories");
     res.send(result);
   });
 };

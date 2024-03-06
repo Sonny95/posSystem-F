@@ -27,7 +27,7 @@ export default (req, res) => {
         });
       }
 
-      console.log("User created successfully:", result);
+      console.info("User created successfully:", result);
       return res.status(200).json({
         code: 200,
         message: "User created successfully",

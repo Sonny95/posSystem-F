@@ -9,7 +9,7 @@ export default (req, res) => {
       return;
     }
 
-    console.log("adminOrderDetail");
+    console.info("adminOrderDetail");
     res.send(result);
   });
 };

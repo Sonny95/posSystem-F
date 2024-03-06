@@ -86,7 +86,7 @@ export default (req, res) => {
                   });
                 });
               } else {
-                console.log(itemResult, "itemResult");
+                console.info(itemResult, "itemResult");
                 return res.status(200).json({
                   code: 200,
                 });

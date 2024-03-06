@@ -21,32 +21,27 @@ function SignsUp() {
   } = useForm<HookFormTypes>({ mode: "onChange" });
 
   const onSubmit = (data: HookFormTypes) => {
-    console.log(onSubmit, "onsubmit");
-
     const sendData = {
       code: data.code,
       name: data.name,
       password: data.password,
     };
-    console.log(sendData, "send");
     axios
       .post("/api/createUser", sendData)
       .then((updateResponse) => {
-        console.log(updateResponse.status, "updateResponse.status");
         if (updateResponse.status === 200) {
           alert("User created successfully");
           router.push("/admin");
         }
       })
       .catch((statusError) => {
-        console.log(statusError);
+        console.info(statusError);
       });
-    console.log(data, "data");
   };
 
   return (
     <div>
-      <div className="w-full h-full flex items-center justify-center bg-gray-100">
+      <div className="w-full h-screen flex items-center justify-center bg-gray-100">
         <div className="w-[500px] h-[744px] bg-gray-100 flex flex-col items-center justify-center">
           <img src="logo.png" className="mb-[30px]" />
 

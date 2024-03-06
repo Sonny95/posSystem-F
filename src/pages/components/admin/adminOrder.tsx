@@ -38,13 +38,12 @@ function AdminOrder() {
     axios
       .post(`/api/updateStatus/${updateId}`, requestData)
       .then((updateResponse) => {
-        console.log(updateResponse.status, "updateResponse.status");
         if (updateResponse.status === 200) {
           alert("updated");
         }
       })
       .catch((statusError) => {
-        console.log(statusError);
+        console.info(statusError);
       });
   };
 

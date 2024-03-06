@@ -48,7 +48,7 @@ function Pagenation({ totalPage, onPageChange }: PagenationProps) {
         </IconButton>
       );
     }
-    //액티브가 3 밑일때 5번까지 포문돌아서 숫자 5개 페이지다보여줌
+    //if active under the 3, it shows 5 by for
   } else if (active < 3) {
     for (let index = 1; index <= 5; index++) {
       pageButtons.push(
@@ -58,7 +58,7 @@ function Pagenation({ totalPage, onPageChange }: PagenationProps) {
       );
     }
   } else {
-    // active가 페이지 3번 을 넘어 누르게되면 ... 앞뒤로 붙여주는데 액티브꺼에서 -2랑 +2 한 숫자까지만뜸
+    // If active over page 3, add ... -2 and +2
     if (active > 3) {
       pageButtons.push(<span key="startEllipsis">...</span>);
     }

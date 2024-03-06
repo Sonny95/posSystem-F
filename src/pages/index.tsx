@@ -40,7 +40,7 @@ export default function Home() {
       });
   }, []);
 
-  //cartitems 값이 변경될때마다 동ㅇ작
+  //active when cartitems status is changed
   useEffect(() => {
     dispatch(updateTotals({ cartItems, cartTotalPrice }));
   }, [cartItems]);

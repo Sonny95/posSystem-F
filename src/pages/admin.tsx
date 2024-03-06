@@ -38,7 +38,7 @@ function PendingPage() {
   }, []);
 
   return (
-    <div className="w-full flex items-center justify-center bg-gray-100 ">
+    <div className="w-full h-screen flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <AdminCategories categories={categories} />
         <AdminMiddleComponent />

@@ -24,29 +24,26 @@ function Login() {
       code: data.code,
       password: data.password,
     };
-    console.log(userData, "userData");
+
     axios
       .post("/api/users", userData)
       .then((updateResponse) => {
-        console.log(updateResponse.status, "updateResponse.status");
         if (updateResponse.status === 200) {
           cookies.set("token", updateResponse.data.token);
           alert("Login successfuly");
           router.push("/admin");
-          console.log(updateResponse.data.token);
         } else {
           alert("Code or Password defined");
         }
       })
       .catch((statusError) => {
-        console.log(statusError);
+        console.info(statusError);
       });
-    console.log(data, "data");
   };
 
   return (
     <div>
-      <div className="w-full h-full flex items-center justify-center bg-gray-100">
+      <div className="w-full h-screen flex items-center justify-center bg-gray-100">
         <div className="w-[500px] h-[744px] bg-gray-100 flex flex-col items-center justify-center">
           <img src="logo.png" className="mb-[30px]" />
           <form onSubmit={handleSubmit(onSubmit)}>

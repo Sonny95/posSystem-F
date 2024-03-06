@@ -13,13 +13,13 @@ function TimeComponent() {
       setCurrentDate(date);
     };
 
-    // 초기 날짜 업데이트
+    // update date
     updateCurrentDate();
 
-    // 1분마다 날짜 업데이트
+    // update every 1 minutes
     const intervalId = setInterval(updateCurrentDate, 60000);
 
-    // 컴포넌트가 언마운트될 때 interval 정리
+    // organize interval when component unmount
     return () => clearInterval(intervalId);
   }, []);
 
@@ -30,7 +30,7 @@ function TimeComponent() {
         weekday: "long",
       });
       const time = now.toLocaleTimeString("en-AU", {
-        hour12: false, // 12시간 형식 사용 안 함
+        hour12: false, // for 24 hours
         hour: "2-digit",
         minute: "2-digit",
       });
@@ -39,13 +39,13 @@ function TimeComponent() {
       setCurrentWeekDate(currentDateTime);
     };
 
-    // 초기 시간 업데이트
+    // update time
     updateCurrentTime();
 
-    // 1분마다 시간 업데이트
+    // update time every one minutes
     const intervalId = setInterval(updateCurrentTime, 60000);
 
-    // 컴포넌트가 언마운트될 때 interval 정리
+    // organize interval when component unmount
     return () => clearInterval(intervalId);
   }, []);
 

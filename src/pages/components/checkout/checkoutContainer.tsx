@@ -53,7 +53,7 @@ function CheckoutContainer({
         }
       })
       .catch((orderError) => {
-        console.log(orderError);
+        console.info(orderError);
       });
   };
 

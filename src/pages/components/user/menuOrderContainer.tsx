@@ -43,7 +43,7 @@ function MenuOrderContainer({ cartItems, cartTotalPrice, clicked }: MenuOrderCon
       <div className=" w-[289px] h-[607px] mt-[20px] overflow-y-visible overflow-x-hidden">
         <Cart cartItems={cartItems} clicked={clicked} />
       </div>
-      {/* 페이벗튼 */}
+      {/* Payment button */}
       <Link href="/checkout">
         <div className=" w-[289px] h-[48px]">
           <PayButton cartTotalPrice={cartTotalPrice} onClick={() => {}} />

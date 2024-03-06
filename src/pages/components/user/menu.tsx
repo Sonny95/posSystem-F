@@ -27,13 +27,13 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
 
       <div className="w-[545px] h-[644px] flex flex-wrap">
         {loading
-          ? // 로딩 중일 때 스켈레톤 표시
+          ? // skeleton loading
             Array.from({ length: 9 }).map((_, index) => (
               <div key={index} className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer">
                 <Skeleton width={105.92} height={90} style={{ margin: "auto" }} />
               </div>
             ))
-          : // 데이터 로드 후 실제 내용 표시
+          : // after data received
             data?.map((value) => (
               <div
                 key={value.id}

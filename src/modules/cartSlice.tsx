@@ -21,11 +21,11 @@ export const cartSlice = createSlice({
       const itemIndex = state.cartItem.findIndex(
         (item: { id: number }) => item.id === action.payload.id
       );
-      //   새로운 아이템이면 푸쉬해주기
+      //  if received a new, push
       if (itemIndex >= 0) {
         state.cartItem[itemIndex].cartQuantity += 1;
       } else {
-        // 있는거면 퀀티티 1 올려주기
+        // + 1 quantity
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.cartItem.push(tempProduct);
       }
@@ -43,7 +43,7 @@ export const cartSlice = createSlice({
       }
     },
     removeItem(state, action) {
-      //필터 사용해서 거르려는 아이디랑 맞는거 삭제하고 업데이트
+      // delete same id item then updateby filter
       const nextCartItems = state.cartItem.filter((cartItem) => cartItem.id !== action.payload.id);
       state.cartItem = nextCartItems;
     },
