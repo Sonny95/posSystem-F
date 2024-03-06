@@ -8,6 +8,7 @@ import {
   initCart,
   updateTotals,
 } from "../../../modules/cartSlice";
+import Link from "next/link";
 
 interface item {
   id: number;
@@ -53,21 +54,23 @@ function CheckoutMenuOrderContainer({
   return (
     <div className="w-[417px] h-full bg-white mr-[22px] ml-[38px]">
       <div className="w-[397px] h-full  mx-[10px]">
-        <div className="w-[397px] h-[24px] bg-white text-xl mt-[34px] mb-[20px] flex ">
-          <p className="font-medium mr-3">Checkout</p>
-          <button
-            onClick={() => {
-              clicked("initCart", cartItems);
-            }}
-            className="mr-2 h-[20px] ml-auto cursor-pointer"
-          >
-            Delete All
-          </button>
+        <Link href={"/"}>
+          <button className="font-medium mr-8 mt-[10px] cursor-pointer"> ← Go back to Menu</button>
+        </Link>
+        <div className="w-[397px] h-[24px] bg-white mt-[34px] mb-[20px] flex ">
+          <p className="font-medium mr-3 text-xl ">Checkout</p>
         </div>
 
         <div className="w-[397px] h-[666px] my-5 overflow-y-visible overflow-x-hidden">
           <Cart cartItems={cartItems} clicked={clicked} />
-          <button>Go Back to Menu Page</button>
+          <button
+            onClick={() => {
+              clicked("initCart", cartItems);
+            }}
+            className="mr-2 h-[20px] mb-[10px]ml-auto cursor-pointer float-right"
+          >
+            Delete All
+          </button>
         </div>
       </div>
     </div>

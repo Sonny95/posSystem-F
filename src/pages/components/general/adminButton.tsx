@@ -26,7 +26,7 @@ function AdminButton() {
 
   return (
     <div>
-      <div className="w-[110px] h-[24px] mt-[20px] flex ml-4 cursor-pointer">
+      <div className="w-[110px] h-[24px] mt-[10px] flex ml-4 cursor-pointer">
         <button
           onClick={openModal}
           className="w-[250px] h-[35px] bg-white  hover:font-bold rounded-lg px-6 cursor-pointer hover:bg-[#003049] hover:text-white text-black "
