@@ -99,21 +99,27 @@ function CheckoutContainer({
                 <p>Cardholder Name</p>
                 <input
                   placeholder="Cardholder Name"
-                  className="w-full h-[50px] bg-gray-200 mb-[30px]"
+                  className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
                 ></input>
                 <p>Cardholder Number</p>
                 <input
                   placeholder="Cardholder Number"
-                  className="w-full h-[50px] bg-gray-200 mb-[30px]"
+                  className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
                 ></input>
                 <div className="flex w-full">
                   <div className="mr-[20px]">
                     <p>Expiration Date</p>
-                    <input placeholder="00/00" className="w-[173.5px] h-[50px] bg-gray-200"></input>
+                    <input
+                      placeholder="00/00"
+                      className="w-[173.5px] h-[50px] bg-gray-200 rounded-lg"
+                    ></input>
                   </div>
                   <div>
                     <p>CVV</p>
-                    <input placeholder="CVV" className="w-[173.5px] h-[50px] bg-gray-200"></input>
+                    <input
+                      placeholder="CVV"
+                      className="w-[173.5px] h-[50px] bg-gray-200 rounded-lg"
+                    ></input>
                   </div>
                 </div>
               </div>

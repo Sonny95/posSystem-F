@@ -12,6 +12,7 @@ import {
 } from "../modules/cartSlice";
 import axios from "axios";
 import { useQuery } from "react-query";
+import AdminButton from "./components/general/adminButton";
 
 interface RootState {
   cart: {

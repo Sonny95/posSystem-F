@@ -67,6 +67,7 @@ function CheckoutMenuOrderContainer({
 
         <div className="w-[397px] h-[666px] my-5 overflow-y-visible overflow-x-hidden">
           <Cart cartItems={cartItems} clicked={clicked} />
+          <button>Go Back to Menu Page</button>
         </div>
       </div>
     </div>
