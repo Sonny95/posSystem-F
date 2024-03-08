@@ -13,6 +13,7 @@ interface categories {
   src: string;
 }
 
+//useQuery
 function Categories() {
   const {
     error: categoriesError,
@@ -58,7 +59,7 @@ function Categories() {
                 className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
               >
                 <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
-                  <img src={values.src} className="w-[30px] h-[30px]" />
+                  <img src={values.src} className="w-[30px] h-[30px] " />
                   <p>{values.name}</p>
                 </div>
               </div>

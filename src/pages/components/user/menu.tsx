@@ -38,7 +38,7 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
               <div
                 key={value.id}
                 onClick={() => clicked(value)}
-                className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer	"
+                className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer	rounded-lg"
               >
                 <div className="w-[122px] h-[122px] my-0 mx-auto mt-4 flex items-center justify-center">
                   <img src={value.src} className="w-[105.92px] h-[90px]" />
