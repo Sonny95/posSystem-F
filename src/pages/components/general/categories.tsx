@@ -26,8 +26,8 @@ function Categories({
   foods,
   setFilteredFoods,
 }: {
-  foods: MenuItem[];
-  setFilteredFoods: React.Dispatch<React.SetStateAction<MenuItem[]>>;
+  foods?: MenuItem[];
+  setFilteredFoods?: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 }) {
   //useQuery
   const {
@@ -47,9 +47,12 @@ function Categories({
   //receive a onclick event parameter
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
-    const filteredFoods = foods.filter((food) => food.foodType === category);
+    const filteredFoods = foods?.filter((food) => food.foodType === category);
     // updating setfilteredFood
-    setFilteredFoods(filteredFoods);
+    if (filteredFoods !== undefined) {
+      setFilteredFoods?.(filteredFoods);
+    }
+    // setFilteredFoods?.(filteredFoods)
   };
 
   return (
