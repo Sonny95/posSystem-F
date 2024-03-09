@@ -23,6 +23,7 @@ interface RootState {
 
 export default function Home() {
   const [foods, setFoods] = useState([]);
+  const [filteredFoods, setFilteredFoods] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -30,11 +31,13 @@ export default function Home() {
 
   const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
 
+  // save data at setFilteredFoods for showing unfiltered data
   useEffect(() => {
     axios
       .get("/api/foods")
       .then((response) => {
         setFoods(response.data);
+        setFilteredFoods(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -49,9 +52,10 @@ export default function Home() {
   return (
     <div className="w-full h-screen flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
-        <Categories />
+        <Categories foods={foods} setFilteredFoods={setFilteredFoods} />
+        {/* giving filtered foods */}
         <Menu
-          data={foods}
+          data={filteredFoods}
           clicked={(value: any) => {
             dispatch(addToCart(value));
           }}

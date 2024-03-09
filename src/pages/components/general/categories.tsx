@@ -13,8 +13,23 @@ interface categories {
   src: string;
 }
 
-//useQuery
-function Categories() {
+interface MenuItem {
+  id: number;
+  name: string;
+  price: number;
+  src: string;
+  foodType: string;
+}
+
+//send the selected category
+function Categories({
+  foods,
+  setFilteredFoods,
+}: {
+  foods: MenuItem[];
+  setFilteredFoods: React.Dispatch<React.SetStateAction<MenuItem[]>>;
+}) {
+  //useQuery
   const {
     error: categoriesError,
     data: categoriesData,
@@ -26,6 +41,16 @@ function Categories() {
 
   // checking the cashing data or error
   if (categoriesError) return <div>Error fetching categories</div>;
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  //receive a onclick event parameter
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    const filteredFoods = foods.filter((food) => food.foodType === category);
+    // updating setfilteredFood
+    setFilteredFoods(filteredFoods);
+  };
 
   return (
     <div className="w-[126px] h-full flex flex-col">
@@ -55,6 +80,7 @@ function Categories() {
           : // after loading
             categoriesData?.map((values: categories) => (
               <div
+                onClick={() => handleCategoryClick(values.name)}
                 key={values.id}
                 className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
               >
