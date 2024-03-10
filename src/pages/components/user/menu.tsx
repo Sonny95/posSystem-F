@@ -12,18 +12,39 @@ interface MenuItem {
 function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) => void }) {
   const [loading, setLoading] = useState(true);
 
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     if (data && data.length > 0) {
       setLoading(false);
     }
   }, [data]);
 
+  //searchBar Chase onClick
+  const onChange = (e: any) => {
+    setSearch(e.target.value);
+  };
+
+  //filter with some requirement
+  const filterName = data.filter((p) => {
+    return p.name
+      .replace(" ", "")
+      .toLocaleLowerCase()
+      .includes(search.toLocaleLowerCase().replace(" ", ""));
+  });
+
   return (
     <div className="w-[545px] h-full mx-[22px] overflow-y-visible overflow-x-hidden">
       {/* search bar */}
-      {/* <div className="h-[40px] w-[545px] my-[10px] ">
-        <input placeholder="Search" className="w-[525px] h-full rounded-lg p-5 mx-[10px]"></input>{" "}
-      </div> */}
+      <div className="h-[40px] w-[545px] my-[10px] ">
+        <input
+          type="text"
+          value={search}
+          onChange={onChange}
+          placeholder="Search"
+          className="w-[525px] h-full rounded-lg p-5 mx-[10px]"
+        ></input>{" "}
+      </div>
 
       <div className="w-[545px] h-[644px] flex flex-wrap">
         {loading
@@ -34,7 +55,7 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
               </div>
             ))
           : // after data received
-            data?.map((value) => (
+            filterName?.map((value) => (
               <div
                 key={value.id}
                 onClick={() => clicked(value)}
