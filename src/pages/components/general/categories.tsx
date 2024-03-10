@@ -30,7 +30,7 @@ function Categories({
   setFilteredFoods?: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 }) {
   const [selectedCategory, setSelectedCategory] = useState("");
-
+  const [hoveredCategory, setHoveredCategory] = useState("");
   //useQuery
   const {
     error: categoriesError,
@@ -44,15 +44,19 @@ function Categories({
   // checking the cashing data or error
   if (categoriesError) return <div>Error fetching categories</div>;
 
-  //receive a onclick event parameter
+  //receive a onclick event parameter / optinal chaning for use a categories component to another component
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
+    // setHoveredCategory(category);
     const filteredFoods = foods?.filter((food) => food.foodType === category);
-    // updating setfilteredFood
+    // updating setfilteredFood when not undefined
     if (filteredFoods !== undefined) {
       setFilteredFoods?.(filteredFoods);
     }
-    // setFilteredFoods?.(filteredFoods)
+  };
+
+  const handleHover = (para: any) => {
+    setHoveredCategory(para);
   };
 
   return (
@@ -81,11 +85,20 @@ function Categories({
               </div>
             ))
           : // after loading
+
             categoriesData?.map((values: categories) => (
               <div
-                onClick={() => handleCategoryClick(values.name)}
+                onClick={() => {
+                  handleCategoryClick(values.name);
+                  handleHover(values.name);
+                }}
                 key={values.id}
-                className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+                //   className={`rounded-lg cursor-pointer w-[110px] h-[95px] flex my-[20px] hover:bg-[#003049]
+                // ${hoveredCategory === values.name ? "bg-[#003049]" : "bg-gray-400"}`}
+                className={`rounded-lg cursor-pointer w-[110px] h-[95px]  flex flex-col
+                items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white 
+                ${hoveredCategory === values.name ? "bg-[#003049] text-white" : "bg-white"}
+                `}
               >
                 <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
                   <img src={values.src} className="w-[30px] h-[30px] " />

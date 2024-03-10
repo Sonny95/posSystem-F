@@ -24,7 +24,7 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
     setSearch(e.target.value);
   };
 
-  //filter with some requirement
+  //filter with some requirement (does data come through?)
   const filterData = data
     ? data.filter((food) => {
         return food.name
@@ -50,7 +50,7 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
       <div className="w-[545px] h-[644px] flex flex-wrap">
         {loading
           ? // skeleton loading
-            Array.from({ length: 3 }).map((_, index) => (
+            Array.from({ length: 9 }).map((_, index) => (
               <div key={index} className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer">
                 <Skeleton width={105.92} height={90} style={{ margin: "auto" }} />
               </div>
