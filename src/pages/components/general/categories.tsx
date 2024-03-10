@@ -29,6 +29,8 @@ function Categories({
   foods?: MenuItem[];
   setFilteredFoods?: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 }) {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   //useQuery
   const {
     error: categoriesError,
@@ -41,8 +43,6 @@ function Categories({
 
   // checking the cashing data or error
   if (categoriesError) return <div>Error fetching categories</div>;
-
-  const [selectedCategory, setSelectedCategory] = useState("");
 
   //receive a onclick event parameter
   const handleCategoryClick = (category: string) => {

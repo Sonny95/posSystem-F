@@ -11,7 +11,6 @@ interface MenuItem {
 
 function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) => void }) {
   const [loading, setLoading] = useState(true);
-
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -26,8 +25,8 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
   };
 
   //filter with some requirement
-  const filterName = data.filter((p) => {
-    return p.name
+  const filterData = data.filter((food) => {
+    return food.name
       .replace(" ", "")
       .toLocaleLowerCase()
       .includes(search.toLocaleLowerCase().replace(" ", ""));
@@ -49,13 +48,13 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
       <div className="w-[545px] h-[644px] flex flex-wrap">
         {loading
           ? // skeleton loading
-            Array.from({ length: 9 }).map((_, index) => (
+            Array.from({ length: 3 }).map((_, index) => (
               <div key={index} className="w-[161px] h-[250px] bg-white m-[10px] cursor-pointer">
                 <Skeleton width={105.92} height={90} style={{ margin: "auto" }} />
               </div>
             ))
           : // after data received
-            filterName?.map((value) => (
+            filterData?.map((value) => (
               <div
                 key={value.id}
                 onClick={() => clicked(value)}
