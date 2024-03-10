@@ -21,9 +21,9 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
   return (
     <div className="w-[545px] h-full mx-[22px] overflow-y-visible overflow-x-hidden">
       {/* search bar */}
-      <div className="h-[40px] w-[545px] my-[10px] ">
+      {/* <div className="h-[40px] w-[545px] my-[10px] ">
         <input placeholder="Search" className="w-[525px] h-full rounded-lg p-5 mx-[10px]"></input>{" "}
-      </div>
+      </div> */}
 
       <div className="w-[545px] h-[644px] flex flex-wrap">
         {loading
