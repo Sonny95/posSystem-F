@@ -25,12 +25,14 @@ function Menu({ data, clicked }: { data: MenuItem[]; clicked: (item: MenuItem) =
   };
 
   //filter with some requirement
-  const filterData = data.filter((food) => {
-    return food.name
-      .replace(" ", "")
-      .toLocaleLowerCase()
-      .includes(search.toLocaleLowerCase().replace(" ", ""));
-  });
+  const filterData = data
+    ? data.filter((food) => {
+        return food.name
+          .replace(" ", "")
+          .toLocaleLowerCase()
+          .includes(search.toLocaleLowerCase().replace(" ", ""));
+      })
+    : [];
 
   return (
     <div className="w-[545px] h-full mx-[22px] overflow-y-visible overflow-x-hidden">
