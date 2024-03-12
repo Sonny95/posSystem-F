@@ -15,11 +15,18 @@ interface categories {
 }
 
 function AdminCategories({ categories }: categories) {
+  //go back to /
   const LogoutClicked = (category: any) => {
-    category.name === "Logout";
-    return router.push("/");
+    if (category.name === "Logout") {
+      router.push("/");
+    }
   };
 
+  const categoryClicked = (category: any) => {
+    if (category.name !== "Logout") {
+      alert("This is not available yet. They will be updated later.");
+    }
+  };
   return (
     <div className="w-[126px] h-full flex flex-col  mt-[20px] ">
       {/* Logo container */}
@@ -33,7 +40,10 @@ function AdminCategories({ categories }: categories) {
       <div className="w-[80px] h-full  ml-[28px] ">
         {categories?.map((values) => (
           <div
-            onClick={() => LogoutClicked(values)}
+            onClick={() => {
+              LogoutClicked(values);
+              categoryClicked(values);
+            }}
             key={values.id}
             className="rounded-lg cursor-pointer ounded-lg w-[80px] h-[80px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
           >
