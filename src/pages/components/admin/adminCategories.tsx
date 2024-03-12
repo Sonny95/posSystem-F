@@ -19,14 +19,11 @@ function AdminCategories({ categories }: categories) {
   const LogoutClicked = (category: any) => {
     if (category.name === "Logout") {
       router.push("/");
-    }
-  };
-
-  const categoryClicked = (category: any) => {
-    if (category.name !== "Logout") {
+    } else {
       alert("This is not available yet. They will be updated later.");
     }
   };
+
   return (
     <div className="w-[126px] h-full flex flex-col  mt-[20px] ">
       {/* Logo container */}
@@ -42,7 +39,6 @@ function AdminCategories({ categories }: categories) {
           <div
             onClick={() => {
               LogoutClicked(values);
-              categoryClicked(values);
             }}
             key={values.id}
             className="rounded-lg cursor-pointer ounded-lg w-[80px] h-[80px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
