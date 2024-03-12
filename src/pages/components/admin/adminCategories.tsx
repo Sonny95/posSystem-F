@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import router from "next/router";
 
 interface category {
   id: number;
@@ -14,6 +15,11 @@ interface categories {
 }
 
 function AdminCategories({ categories }: categories) {
+  const LogoutClicked = (category: any) => {
+    category.name === "Logout";
+    return router.push("/");
+  };
+
   return (
     <div className="w-[126px] h-full flex flex-col  mt-[20px] ">
       {/* Logo container */}
@@ -27,6 +33,7 @@ function AdminCategories({ categories }: categories) {
       <div className="w-[80px] h-full  ml-[28px] ">
         {categories?.map((values) => (
           <div
+            onClick={() => LogoutClicked(values)}
             key={values.id}
             className="rounded-lg cursor-pointer ounded-lg w-[80px] h-[80px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
           >
