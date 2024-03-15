@@ -93,8 +93,6 @@ function Categories({
                   handleHover(values.name);
                 }}
                 key={values.id}
-                //   className={`rounded-lg cursor-pointer w-[110px] h-[95px] flex my-[20px] hover:bg-[#003049]
-                // ${hoveredCategory === values.name ? "bg-[#003049]" : "bg-gray-400"}`}
                 className={`rounded-lg cursor-pointer w-[110px] h-[95px]  flex flex-col
                 items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white 
                 ${hoveredCategory === values.name ? "bg-[#003049] text-white" : "bg-white"}

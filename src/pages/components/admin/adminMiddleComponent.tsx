@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TimeComponent from "../general/timeComponent";
 import AdminTransaction from "./adminTransaction";
+import ManageCategories from "./manageCategories";
 
 function AdminMiddleComponents() {
   return (
@@ -10,7 +11,8 @@ function AdminMiddleComponents() {
         {/* menu button */}
 
         {/* card */}
-        <AdminTransaction />
+        <ManageCategories />
+        {/* <AdminTransaction /> */}
       </div>
     </div>
   );
