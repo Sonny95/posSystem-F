@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Pagination from "../../components/general/pagination";
+import Pagination from "../general/pagination";
 import { useDispatch } from "react-redux";
 import { updateId } from "../../../modules/adminSlice";
 
@@ -16,12 +16,21 @@ interface AdminOrderHistoryProps {
   selectedstatus: string;
 }
 
-function AdminOrderHistory({ selectedstatus }: AdminOrderHistoryProps) {
+function AdminTransaction() {
   const dispatch = useDispatch();
 
   const [totalPage, setTotalPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [order, setOrder] = useState<order[]>([]);
+  const [selectedstatus, setSelectedstatus] = useState("Pending");
+
+  const handlePendingClick = () => {
+    setSelectedstatus("Pending");
+  };
+
+  const handleCompletedClick = () => {
+    setSelectedstatus("Completed");
+  };
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -45,6 +54,28 @@ function AdminOrderHistory({ selectedstatus }: AdminOrderHistoryProps) {
 
   return (
     <div>
+      <div className="my-[30px] flex ">
+        <button
+          onClick={handlePendingClick}
+          className={`w-[90px] h-[35px] cursor-pointer mr-[30px] rounded-lg flex items-center justify-center text-black ${
+            selectedstatus === "Pending"
+              ? "bg-[#003049] text-white"
+              : "bg-white hover:bg-[#003049] hover:text-white"
+          }`}
+        >
+          Pending
+        </button>
+        <button
+          onClick={handleCompletedClick}
+          className={`w-[90px] h-[35px] cursor-pointer mr-[30px] rounded-lg flex items-center justify-center text-black ${
+            selectedstatus === "Completed"
+              ? "bg-[#003049] text-white"
+              : "bg-white hover:bg-[#003049] hover:text-white"
+          }`}
+        >
+          Completed
+        </button>
+      </div>
       {/* hover */}
       {order?.map((value) => (
         <div
@@ -83,4 +114,4 @@ function AdminOrderHistory({ selectedstatus }: AdminOrderHistoryProps) {
   );
 }
 
-export default AdminOrderHistory;
+export default AdminTransaction;
