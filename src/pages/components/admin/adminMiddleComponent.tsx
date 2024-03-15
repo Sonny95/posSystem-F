@@ -11,8 +11,8 @@ function AdminMiddleComponents() {
         {/* menu button */}
 
         {/* card */}
-        <ManageCategories />
-        {/* <AdminTransaction /> */}
+        {/* <ManageCategories /> */}
+        <AdminTransaction />
       </div>
     </div>
   );
