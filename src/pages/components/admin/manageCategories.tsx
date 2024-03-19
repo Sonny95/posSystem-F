@@ -27,12 +27,12 @@ function ManageCategories() {
       <div className="w-full flex items-center justify-center my-[30px] flex-col">
         {categories.map((data: categories) => (
           <div
-            className={`w-2/3 bg-white h-[90px] rounded-lg my-2 flex items-center justify-center flex-col cursor-pointer hover:bg-[#003049] hover:text-white 
+            className={`w-[110px] bg-white h-[90px]  rounded-lg m-2 flex-col flex items-center justify-around cursor-pointer hover:bg-[#003049] hover:text-white 
           ${categoryBtn === data.name ? "bg-[#003049] text-white" : "bg-white"}
           `}
           >
-            <img src={data.src} className="h-1/3 mb-[5px]" />
-            <div>{data.name}</div>
+            <img src={data.src} className="h-1/3" />
+            <div className="text-lg">{data.name}</div>
           </div>
         ))}
       </div>

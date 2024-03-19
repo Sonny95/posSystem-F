@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import AdminCategories from "./components/admin/adminCategories";
 import AdminMiddleComponent from "./components/admin/adminMiddleComponent";
-import AdminOrder from "./components/admin/adminOrder";
+import AdminRightComponent from "./components/admin/adminRightComponent";
 import { GetServerSideProps } from "next";
 
 interface RootState {
@@ -42,7 +42,7 @@ function PendingPage() {
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <AdminCategories categories={categories} />
         <AdminMiddleComponent />
-        <AdminOrder />
+        <AdminRightComponent />
       </div>
     </div>
   );
