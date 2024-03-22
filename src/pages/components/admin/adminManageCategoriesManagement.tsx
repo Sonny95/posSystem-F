@@ -8,16 +8,16 @@ function AdminManageCategoriesManagement() {
   const [itemsData, setItemsData] = useState([]);
 
   //fetching data by redux
-  useEffect(() => {
-    axios
-      .get(`/api/adminManageCategory/${updateId}`)
-      .then((response) => {
-        setItemsData(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [updateId]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`/api/adminManageCategory/${updateId}`)
+  //     .then((response) => {
+  //       setItemsData(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [updateId]);
 
   return (
     <div>
@@ -27,11 +27,11 @@ function AdminManageCategoriesManagement() {
           <>
             <div className=" w-[289px] h-[559px] mt-[40px] overflow-y-visible overflow-x-hidden">
               <input
-                placeholder={value.src}
+                placeholder="src"
                 className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
               ></input>
               <input
-                placeholder={value.name}
+                placeholder="name"
                 className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
               ></input>
             </div>
