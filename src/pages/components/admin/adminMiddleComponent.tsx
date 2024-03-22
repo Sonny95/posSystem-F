@@ -12,9 +12,9 @@ function AdminMiddleComponents() {
         {/* menu button */}
 
         {/* card */}
-        {/* <AdminTransaction /> */}
+        <AdminTransaction />
         {/* <ManageCategories /> */}
-        <ManageMenu />
+        {/* <ManageMenu /> */}
       </div>
     </div>
   );

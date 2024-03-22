@@ -7,9 +7,9 @@ import AdminManageMenuManagement from "./adminManageMenuManagement";
 
 function AdminOrder() {
   return (
-    // <AdminTransactionManagement />
+    <AdminTransactionManagement />
     // <AdminManageCategoriesManagement />
-    <AdminManageMenuManagement />
+    // <AdminManageMenuManagement />
   );
 }
 
