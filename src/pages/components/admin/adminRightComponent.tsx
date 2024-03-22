@@ -8,9 +8,13 @@ import AdminManageMenuManagement from "./adminManageMenuManagement";
 function AdminOrder({ selectedCategory }: any) {
   return (
     <div>
-      {/* {selectedCategory.name === "Transaction" && <AdminTransactionManagement />}
-      {selectedCategory.name === "Manage Categories" && <AdminManageCategoriesManagement />}
-      {selectedCategory.name === "Manage Foods" && <AdminManageMenuManagement />} */}
+      {selectedCategory && (
+        <div>
+          {selectedCategory.name === "Transaction" && <AdminTransactionManagement />}
+          {selectedCategory.name === "Manage Categories" && <AdminManageCategoriesManagement />}
+          {selectedCategory.name === "Manage Foods" && <AdminManageMenuManagement />}
+        </div>
+      )}
     </div>
   );
 }
