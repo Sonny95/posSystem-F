@@ -18,7 +18,7 @@ function AdminManageCategoriesManagement() {
         </div>
         <div className=" w-[289px] h-[48px] bottom-0">
           <button className="w-full h-full bg-gray-100 z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400">
-            <p>Updated</p>
+            <p>Updated.</p>
             <p>{">"} </p>
           </button>
         </div>
