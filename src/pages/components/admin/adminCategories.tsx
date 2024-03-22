@@ -16,10 +16,6 @@ interface CategoriesProps {
 }
 
 function AdminCategories({ categories, onCategoryClick }: CategoriesProps) {
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-  //go back to /
-
   return (
     <div className="w-[126px] h-full flex flex-col  mt-[20px] ">
       {/* Logo container */}

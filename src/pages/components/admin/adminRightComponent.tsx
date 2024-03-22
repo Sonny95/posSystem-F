@@ -5,11 +5,13 @@ import AdminTransactionManagement from "./adminTransactionManagement";
 import AdminManageCategoriesManagement from "./adminManageCategoriesManagement";
 import AdminManageMenuManagement from "./adminManageMenuManagement";
 
-function AdminOrder() {
+function AdminOrder({ selectedCategory }: any) {
   return (
-    <AdminTransactionManagement />
-    // <AdminManageCategoriesManagement />
-    // <AdminManageMenuManagement />
+    <div>
+      {selectedCategory.name === "Transaction" && <AdminTransactionManagement />}
+      {selectedCategory.name === "Manage Categories" && <AdminManageCategoriesManagement />}
+      {selectedCategory.name === "Manage Foods" && <AdminManageMenuManagement />}
+    </div>
   );
 }
 

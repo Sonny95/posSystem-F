@@ -26,7 +26,8 @@ interface result {
 
 function PendingPage() {
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Transaction");
+  const [selectedData, setSelectedData] = useState("");
 
   useEffect(() => {
     axios
@@ -42,9 +43,11 @@ function PendingPage() {
   const handleCategoryClick = (category: any) => {
     if (category.name === "Logout") {
       router.push("/");
+    }
+    if (category.name === "Settings") {
+      alert("will come back soon!");
     } else {
       setSelectedCategory(category);
-      console.log(category);
     }
   };
 
@@ -52,8 +55,8 @@ function PendingPage() {
     <div className="w-full h-screen flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <AdminCategories categories={categories} onCategoryClick={handleCategoryClick} />
-        <AdminMiddleComponent />
-        <AdminRightComponent />
+        <AdminMiddleComponent selectedCategory={selectedCategory} />
+        <AdminRightComponent selectedCategory={selectedCategory} />
       </div>
     </div>
   );

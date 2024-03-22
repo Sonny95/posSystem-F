@@ -18,8 +18,8 @@ function AdminTransactionManagement() {
   const updateId = useSelector((state: idProps) => state.admin.adminId);
 
   const [itemsData, setItemsData] = useState([]);
-  const [updateStatus, setUpdateStatus] = useState([]);
 
+  //fetch detail data
   useEffect(() => {
     axios
       .get(`/api/adminOrderDetail/${updateId}`)
