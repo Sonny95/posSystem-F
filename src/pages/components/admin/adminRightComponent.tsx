@@ -3,11 +3,13 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import AdminTransactionManagement from "./adminTransactionManagement";
 import AdminManageCategoriesManagement from "./adminManageCategoriesManagement";
+import AdminManageMenuManagement from "./adminManageMenuManagement";
 
 function AdminOrder() {
   return (
+    // <AdminTransactionManagement />
     // <AdminManageCategoriesManagement />
-    <AdminTransactionManagement />
+    <AdminManageMenuManagement />
   );
 }
 

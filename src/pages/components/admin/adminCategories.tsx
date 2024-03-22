@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import router from "next/router";
 
@@ -10,19 +10,15 @@ interface category {
   src: string;
 }
 
-interface categories {
+interface CategoriesProps {
   categories: category[];
+  onCategoryClick: (category: category) => void;
 }
 
-function AdminCategories({ categories }: categories) {
+function AdminCategories({ categories, onCategoryClick }: CategoriesProps) {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   //go back to /
-  const LogoutClicked = (category: any) => {
-    if (category.name === "Logout") {
-      router.push("/");
-    } else {
-      alert("This is not available yet. They will be updated later.");
-    }
-  };
 
   return (
     <div className="w-[126px] h-full flex flex-col  mt-[20px] ">
@@ -38,7 +34,7 @@ function AdminCategories({ categories }: categories) {
         {categories?.map((values) => (
           <div
             onClick={() => {
-              LogoutClicked(values);
+              onCategoryClick(values);
             }}
             key={values.id}
             className="rounded-lg cursor-pointer ounded-lg w-[80px] h-[80px] bg-white flex flex-col text-center items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"

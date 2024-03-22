@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TimeComponent from "../general/timeComponent";
 import AdminTransaction from "./adminTransaction";
 import ManageCategories from "./manageCategories";
+import ManageMenu from "./manageMenu";
 
 function AdminMiddleComponents() {
   return (
@@ -11,8 +12,9 @@ function AdminMiddleComponents() {
         {/* menu button */}
 
         {/* card */}
+        {/* <AdminTransaction /> */}
         {/* <ManageCategories /> */}
-        <AdminTransaction />
+        <ManageMenu />
       </div>
     </div>
   );

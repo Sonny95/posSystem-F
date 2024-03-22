@@ -7,6 +7,7 @@ import AdminCategories from "./components/admin/adminCategories";
 import AdminMiddleComponent from "./components/admin/adminMiddleComponent";
 import AdminRightComponent from "./components/admin/adminRightComponent";
 import { GetServerSideProps } from "next";
+import router from "next/router";
 
 interface RootState {
   cart: {
@@ -25,6 +26,7 @@ interface result {
 
 function PendingPage() {
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     axios
@@ -37,10 +39,19 @@ function PendingPage() {
       });
   }, []);
 
+  const handleCategoryClick = (category: any) => {
+    if (category.name === "Logout") {
+      router.push("/");
+    } else {
+      setSelectedCategory(category);
+      console.log(category);
+    }
+  };
+
   return (
     <div className="w-full h-screen flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
-        <AdminCategories categories={categories} />
+        <AdminCategories categories={categories} onCategoryClick={handleCategoryClick} />
         <AdminMiddleComponent />
         <AdminRightComponent />
       </div>
