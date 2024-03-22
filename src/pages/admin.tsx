@@ -55,8 +55,8 @@ function PendingPage() {
     <div className="w-full h-screen flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <AdminCategories categories={categories} onCategoryClick={handleCategoryClick} />
-        {/* <AdminMiddleComponent selectedCategory={selectedCategory} />
-        <AdminRightComponent selectedCategory={selectedCategory} /> */}
+        <AdminMiddleComponent selectedCategory={selectedCategory} />
+        <AdminRightComponent selectedCategory={selectedCategory} />
       </div>
     </div>
   );

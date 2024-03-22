@@ -11,9 +11,9 @@ function AdminMiddleComponents({ selectedCategory }: any) {
         <TimeComponent />
         {/* menu button */}
 
-        {selectedCategory.name === "Transaction" && <AdminTransaction />}
+        {/* {selectedCategory.name === "Transaction" && <AdminTransaction />}
         {selectedCategory.name === "Manage Categories" && <ManageCategories />}
-        {selectedCategory.name === "Manage Foods" && <ManageMenu />}
+        {selectedCategory.name === "Manage Foods" && <ManageMenu />} */}
       </div>
     </div>
   );
