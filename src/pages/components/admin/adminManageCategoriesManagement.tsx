@@ -12,9 +12,7 @@ function AdminManageCategoriesManagement() {
   const updateId = useSelector((state: any) => state.adminCategory.adminId);
 
   const [itemsData, setItemsData] = useState([]);
-  console.log(itemsData, "ItemsDaata");
   const [newName, setNewName] = useState("");
-  console.log(newName, "newName");
 
   const handleChange = (event: any) => {
     setNewName(event.target.value);
@@ -29,7 +27,6 @@ function AdminManageCategoriesManagement() {
       })
       .catch((error) => {
         console.error(error);
-        console.log(error);
       });
   }, [updateId]);
 

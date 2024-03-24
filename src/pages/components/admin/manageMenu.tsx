@@ -29,7 +29,6 @@ function ManageMenu() {
 
   const handleClick = (value: { id: any } | undefined) => {
     dispatch(updateId(value?.id));
-    console.log(value);
   };
 
   return (

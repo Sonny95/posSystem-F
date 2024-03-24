@@ -10,10 +10,7 @@ interface MenuItem {
 }
 
 function AdminManageMenuManagement() {
-  const updateId = useSelector((state: any) => {
-    console.log(state.adminMenu, "?!");
-    return state.adminMenu.adminId;
-  });
+  const updateId = useSelector((state: any) => state.adminMenu.adminId);
 
   const [itemsData, setItemsData] = useState([]);
 
@@ -36,7 +33,6 @@ function AdminManageMenuManagement() {
       })
       .catch((error) => {
         console.error(error);
-        console.log(error);
       });
   }, [updateId]);
 

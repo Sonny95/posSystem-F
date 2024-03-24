@@ -6,7 +6,6 @@ import AdminManageCategoriesManagement from "./adminManageCategoriesManagement";
 import AdminManageMenuManagement from "./adminManageMenuManagement";
 
 function AdminOrder({ selectedCategory }: any) {
-  console.log(selectedCategory, "AdminOrder");
   return (
     <div>
       {selectedCategory && (

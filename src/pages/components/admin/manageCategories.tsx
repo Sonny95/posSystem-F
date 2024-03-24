@@ -28,7 +28,6 @@ function ManageCategories() {
 
   const handleClick = (value: { id: any } | undefined) => {
     dispatch(updateId(value?.id));
-    console.log(value?.id, "dispatch");
   };
 
   return (
