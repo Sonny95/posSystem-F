@@ -27,7 +27,7 @@ interface result {
 function PendingPage() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Transaction");
-  const [selectedData, setSelectedData] = useState("");
+  console.log(selectedCategory);
 
   useEffect(() => {
     axios
