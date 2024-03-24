@@ -13,7 +13,14 @@ function AdminManageCategoriesManagement() {
 
   const [itemsData, setItemsData] = useState([]);
   console.log(itemsData, "ItemsDaata");
+  const [newName, setNewName] = useState("");
+  console.log(newName, "newName");
 
+  const handleChange = (event: any) => {
+    setNewName(event.target.value);
+  };
+
+  //fetch data by id
   useEffect(() => {
     axios
       .get(`/api/adminCategoryDetail/${updateId}`)
@@ -25,6 +32,24 @@ function AdminManageCategoriesManagement() {
         console.log(error);
       });
   }, [updateId]);
+
+  //change the name and rerendering
+  const submitStatus = () => {
+    const requestData = {
+      newName: newName,
+    };
+    axios
+      .post(`/api/updateCategoryName/${updateId}`, requestData)
+      .then((updateResponse) => {
+        if (updateResponse.status === 200) {
+          alert("Category Name Updated");
+          window.location.reload();
+        }
+      })
+      .catch((statusError) => {
+        console.info(statusError);
+      });
+  };
 
   return (
     <div>
@@ -48,13 +73,17 @@ function AdminManageCategoriesManagement() {
           <div className=" w-[289px] h-full mt-[40px] overflow-y-visible overflow-x-hidden">
             <input
               placeholder="name"
+              onChange={handleChange}
               className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
             ></input>
           </div>
         </div>
         <div className=" w-full h-[48px] bottom-0 flex justify-center items-center">
-          <button className="w-full h-full bg-[#003049] z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400">
-            <p>Updated.</p>
+          <button
+            onClick={submitStatus}
+            className="w-full h-full bg-[#003049] z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400"
+          >
+            <p>Updated</p>
             <p>{">"} </p>
           </button>
         </div>

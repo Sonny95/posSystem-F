@@ -16,7 +16,17 @@ function AdminManageMenuManagement() {
   });
 
   const [itemsData, setItemsData] = useState([]);
-  console.log(itemsData, "ItemsDaata");
+
+  const [newPrice, setNewPrice] = useState("");
+  const [newName, setNewName] = useState("");
+
+  const handlePriceChange = (event: any) => {
+    setNewPrice(event.target.value);
+  };
+
+  const handleNameChange = (event: any) => {
+    setNewName(event.target.value);
+  };
 
   useEffect(() => {
     axios
@@ -29,6 +39,24 @@ function AdminManageMenuManagement() {
         console.log(error);
       });
   }, [updateId]);
+
+  const submitStatus = () => {
+    const requestData = {
+      newPrice: newPrice,
+      newName: newName,
+    };
+    axios
+      .post(`/api/updateMenu/${updateId}`, requestData)
+      .then((updateResponse) => {
+        if (updateResponse.status === 200) {
+          alert("Menu is Updated");
+          window.location.reload();
+        }
+      })
+      .catch((statusError) => {
+        console.info(statusError);
+      });
+  };
 
   return (
     <div>
@@ -56,16 +84,21 @@ function AdminManageMenuManagement() {
           <div className=" w-[289px] h-[559px] mt-[40px] overflow-y-visible overflow-x-hidden">
             <input
               placeholder="Price"
+              onChange={handlePriceChange}
               className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
             ></input>
             <input
               placeholder="Food name"
+              onChange={handleNameChange}
               className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
             ></input>
           </div>
         </div>
         <div className=" w-full h-[48px] bottom-0 flex justify-center items-center">
-          <button className="w-full h-full bg-[#003049] z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400">
+          <button
+            onClick={submitStatus}
+            className="w-full h-full bg-[#003049] z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400"
+          >
             <p>Updated.</p>
             <p>{">"} </p>
           </button>
