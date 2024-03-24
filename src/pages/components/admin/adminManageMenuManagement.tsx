@@ -1,27 +1,72 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
+
+interface MenuItem {
+  id: number;
+  name: string;
+  price: number;
+  src: string;
+}
 
 function AdminManageMenuManagement() {
+  const updateId = useSelector((state: any) => {
+    console.log(state.adminMenu, "?!");
+    return state.adminMenu.adminId;
+  });
+
+  const [itemsData, setItemsData] = useState([]);
+  console.log(itemsData, "ItemsDaata");
+
+  useEffect(() => {
+    axios
+      .get(`/api/adminMenuDetail/${updateId}`)
+      .then((response) => {
+        setItemsData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+        console.log(error);
+      });
+  }, [updateId]);
+
   return (
     <div>
-      <div className="w-[309px] h-full p-[10px] mr-[16px]mt-[20px]  bg-white">
-        <div className="text-xl mt-[20px]">Manage Category</div>
-        <div className=" w-[289px] h-[559px] mt-[40px] overflow-y-visible overflow-x-hidden">
-          <input
-            placeholder="src"
-            className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
-          ></input>
-          <input
-            placeholder="Price"
-            className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
-          ></input>
-          <input
-            placeholder="Food name"
-            className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
-          ></input>
+      <div className="w-[309px] h-full p-[10px] mr-[16px]mt-[20px] bg-white">
+        <div className="w-full h-[629px] ">
+          <div className="text-xl mt-[20px]">Manage Food Category</div>
+          {itemsData.map((value: MenuItem) => (
+            <>
+              <div className="w-[289px]  mt-[40px] overflow-y-visible overflow-x-hidden flex-col items-center justify-center">
+                <div className="flex flex-col items-center mb-[30px] ">
+                  <div
+                    key={value.id}
+                    className="w-[161px] h-[260px] border-4 border-[#003049] m-[10px] cursor-pointer	rounded-lg"
+                  >
+                    <div className="w-[122px] h-[122px] my-0 mx-auto mt-4 flex items-center justify-center">
+                      <img src={value.src} className="w-[105.92px] h-[90px]" />
+                    </div>
+                    <p className="text-center my-2">${value.price}</p>
+                    <p className="font-bold text-center text-m">{value.name}</p>
+                  </div>
+                </div>
+              </div>
+            </>
+          ))}
+          <div className=" w-[289px] h-[559px] mt-[40px] overflow-y-visible overflow-x-hidden">
+            <input
+              placeholder="Price"
+              className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
+            ></input>
+            <input
+              placeholder="Food name"
+              className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
+            ></input>
+          </div>
         </div>
-        <div className=" w-[289px] h-[48px] bottom-0">
-          <button className="w-full h-full bg-gray-100 z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400">
-            <p>Updated</p>
+        <div className=" w-full h-[48px] bottom-0 flex justify-center items-center">
+          <button className="w-full h-full bg-[#003049] z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400">
+            <p>Updated.</p>
             <p>{">"} </p>
           </button>
         </div>

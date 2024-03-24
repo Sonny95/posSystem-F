@@ -38,8 +38,6 @@ function MenuOrderContainer({ cartItems, cartTotalPrice, clicked }: MenuOrderCon
         </button>
       </div>
 
-      {/* will delete below codes after redux */}
-
       <div className=" w-[289px] h-[607px] mt-[20px] overflow-y-visible overflow-x-hidden">
         <Cart cartItems={cartItems} clicked={clicked} />
       </div>

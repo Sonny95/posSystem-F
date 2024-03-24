@@ -1,23 +1,59 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
+interface categories {
+  adminCategory: any;
+  id: number;
+  name: string;
+  src: string;
+}
 function AdminManageCategoriesManagement() {
+  const updateId = useSelector((state: any) => state.adminCategory.adminId);
+
+  const [itemsData, setItemsData] = useState([]);
+  console.log(itemsData, "ItemsDaata");
+
+  useEffect(() => {
+    axios
+      .get(`/api/adminCategoryDetail/${updateId}`)
+      .then((response) => {
+        setItemsData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+        console.log(error);
+      });
+  }, [updateId]);
+
   return (
     <div>
-      <div className="w-[309px] h-full p-[10px] mr-[16px]mt-[20px]  bg-white">
-        <div className="text-xl mt-[20px]">Manage Category</div>
+      <div className="w-[309px] h-full p-[10px] mr-[16px]mt-[20px] bg-white">
+        <div className="w-full h-[629px] ">
+          <div className="text-xl mt-[20px]">Manage Category</div>
 
-        <div className=" w-[289px] h-[559px] mt-[40px] overflow-y-visible overflow-x-hidden">
-          <input
-            placeholder="src"
-            className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
-          ></input>
-          <input
-            placeholder="name"
-            className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
-          ></input>
+          {itemsData.map((value: categories) => (
+            <>
+              <div className="w-[289px] mt-[40px] overflow-y-visible overflow-x-hidden flex-col items-center justify-center">
+                <div className="flex flex-col items-center mb-[10px]">
+                  <div className="w-[110px] h-[100px] flex-col rounded-lg border-4 border-[#003049] flex items-center justify-center">
+                    <img src={value.src} className="h-1/3" alt="Category Image" />
+                    <div className="text-lg">{value.name}</div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ))}
+
+          <div className=" w-[289px] h-full mt-[40px] overflow-y-visible overflow-x-hidden">
+            <input
+              placeholder="name"
+              className="w-full h-[50px] bg-gray-200 mb-[30px] rounded-lg"
+            ></input>
+          </div>
         </div>
-        <div className=" w-[289px] h-[48px] bottom-0">
-          <button className="w-full h-full bg-gray-100 z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400">
+        <div className=" w-full h-[48px] bottom-0 flex justify-center items-center">
+          <button className="w-full h-full bg-[#003049] z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400">
             <p>Updated.</p>
             <p>{">"} </p>
           </button>

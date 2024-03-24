@@ -18,6 +18,7 @@ function AdminTransactionManagement() {
   const updateId = useSelector((state: idProps) => state.admin.adminId);
 
   const [itemsData, setItemsData] = useState([]);
+  console.log(itemsData, "nabag");
 
   //fetch detail data
   useEffect(() => {
