@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PayButton from "../user/payButton";
 import axios from "axios";
 import router from "next/router";
@@ -17,6 +17,7 @@ function CheckoutContainer({
   data: { cartItems: item[]; cartQuantity: number; cartTotalPrice: number };
 }) {
   const { cartItems, cartQuantity, cartTotalPrice } = data;
+  console.log(cartTotalPrice, "carttotal");
   const PaymentList = [
     { id: 1, name: "Credit Card", src: "/creditCard.svg" },
     { id: 2, name: "Cash", src: "/cash.svg" },

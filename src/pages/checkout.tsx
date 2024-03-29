@@ -21,6 +21,7 @@ function checkout() {
   const cartItems = useSelector((state: RootState) => state.cart.cartItem);
   const cartQuantity = useSelector((state: RootState) => state.cart.cartQuantity);
   const cartTotalPrice = useSelector((state: RootState) => state.cart.cartTotalPrice);
+  console.log(cartTotalPrice, "cartTotalCheckout");
 
   useEffect(() => {
     axios
@@ -36,7 +37,7 @@ function checkout() {
     <div className="w-full h-screen flex items-center justify-center bg-gray-100">
       <div className="w-[1024px] h-[744px] bg-gray-100 flex">
         <Categories />
-        <CheckoutMenuOrderContainer cartItems={cartItems} cartTotalPrice={cartTotalPrice} />
+        <CheckoutMenuOrderContainer cartItems={cartItems} />
         <CheckoutContainer data={{ cartItems, cartTotalPrice, cartQuantity }} />
       </div>
     </div>

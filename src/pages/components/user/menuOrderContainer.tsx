@@ -21,6 +21,7 @@ interface MenuOrderContainerProps {
 type clicekdFunction = (event: any, value: any) => void;
 
 function MenuOrderContainer({ cartItems, cartTotalPrice, clicked }: MenuOrderContainerProps) {
+  console.log(cartTotalPrice, "totalpriceindex");
   return (
     <div className="w-[309px] h-full bg-white px-[10px] ">
       {/* delete button */}

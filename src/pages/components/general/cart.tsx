@@ -38,7 +38,7 @@ function Cart({ cartItems, clicked }: { cartItems: item[]; clicked: clicekdFunct
               </div>
             </div>
             <div className="w-[43px] h-[90px] ml-[10px] flex flex-col justify-between items-end text-[14px]">
-              <p>{value.price}</p>
+              <p>${value.price}</p>
               <div onClick={() => clicked("removeItem", value)} className="cursor-pointer">
                 X
               </div>

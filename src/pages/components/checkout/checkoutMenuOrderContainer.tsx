@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Cart from "../general/cart";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -18,25 +18,13 @@ interface item {
   cartQuantity: number;
 }
 
-interface item {
-  id: number;
-  name: string;
-  price: number;
-  src: any;
-  cartQuantity: number;
-}
-
 interface MenuOrderContainerProps {
   cartItems: item[];
-  cartTotalPrice: number;
 }
 
 type clicekdFunction = (event: any, value: any) => void;
 
-function CheckoutMenuOrderContainer({
-  cartItems,
-  cartTotalPrice,
-}: MenuOrderContainerProps): JSX.Element {
+function CheckoutMenuOrderContainer({ cartItems }: MenuOrderContainerProps) {
   const dispatch = useDispatch();
 
   const clicked: clicekdFunction = (event, value) => {
