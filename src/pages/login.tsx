@@ -47,9 +47,11 @@ function Login() {
         <div className="w-[500px] h-[744px] bg-gray-100 flex flex-col items-center justify-center">
           <img src="logo.png" className="mb-[30px]" />
           <form onSubmit={handleSubmit(onSubmit)}>
+            {/* TODO basic value fixed */}
             <div className="mb-[5px] text-2xg">User Code</div>
             <input
               id="code"
+              defaultValue="1234"
               className="w-[250px] h-[50px] bg-gray-200 mb-[30px] rounded-lg"
               {...register("code", {
                 required: "Code is required",
@@ -61,6 +63,7 @@ function Login() {
             <div className="mb-[5px] text-2xg">Password</div>
             <input
               id="password"
+              defaultValue="12345678"
               {...register("password", {
                 required: "Password is required",
                 minLength: { value: 8, message: "Password must be 8-16 charaters" },
