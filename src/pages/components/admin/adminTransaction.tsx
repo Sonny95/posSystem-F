@@ -60,7 +60,7 @@ function AdminTransaction() {
           className={`w-[90px] h-[35px] cursor-pointer mr-[30px] rounded-lg flex items-center justify-center text-black ${
             selectedstatus === "Pending"
               ? "bg-[#003049] text-white"
-              : "bg-white hover:bg-[#003049] hover:text-white"
+              : "bg-white hover:bg-[#db0006] hover:text-white"
           }`}
         >
           Pending
@@ -70,7 +70,7 @@ function AdminTransaction() {
           className={`w-[90px] h-[35px] cursor-pointer mr-[30px] rounded-lg flex items-center justify-center text-black ${
             selectedstatus === "Completed"
               ? "bg-[#003049] text-white"
-              : "bg-white hover:bg-[#003049] hover:text-white"
+              : "bg-white hover:bg-[#db0006] hover:text-white"
           }`}
         >
           Completed

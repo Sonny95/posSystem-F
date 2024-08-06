@@ -72,7 +72,7 @@ function CheckoutContainer({
             <div
               onClick={() => handlePaymentClick(value.name)}
               key={value.id}
-              className={`rounded-lg cursor-pointer w-[110px] h-[95px] flex my-[20px] hover:bg-[#003049]  
+              className={`rounded-lg cursor-pointer w-[110px] h-[95px] flex my-[20px] hover:bg-[#db0006]  
               ${selectedPaymentStatus === value.name ? "bg-[#003049]" : "bg-gray-400"}`}
             >
               <div className="w-[112px] h-[90px] flex flex-col items-center justify-center">

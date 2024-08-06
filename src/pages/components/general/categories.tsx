@@ -76,7 +76,7 @@ function Categories({
             Array.from({ length: 5 }).map((_, index) => (
               <div
                 key={index}
-                className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+                className="rounded-lg cursor-pointer w-[110px] h-[95px] bg-white flex flex-col items-center justify-center my-[20px] hover:bg-[#febb10] hover:text-white text-black"
               >
                 <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
                   <Skeleton width={30} height={30} />
@@ -94,7 +94,7 @@ function Categories({
                 }}
                 key={values.id}
                 className={`rounded-lg cursor-pointer w-[110px] h-[95px]  flex flex-col
-                items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white 
+                items-center justify-center my-[20px] hover:bg-[#db0006] hover:text-white 
                 ${hoveredCategory === values.name ? "bg-[#003049] text-white" : "bg-white"}
                 `}
               >

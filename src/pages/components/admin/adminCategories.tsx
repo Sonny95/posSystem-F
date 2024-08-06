@@ -33,7 +33,7 @@ function AdminCategories({ categories, onCategoryClick }: CategoriesProps) {
               onCategoryClick(values);
             }}
             key={values.id}
-            className="rounded-lg cursor-pointer ounded-lg w-[80px] h-[80px] bg-white flex flex-col text-center items-center justify-center my-[20px] hover:bg-[#003049] hover:text-white text-black"
+            className="rounded-lg cursor-pointer ounded-lg w-[80px] h-[80px] bg-white flex flex-col text-center items-center justify-center my-[20px] hover:bg-[#db0006] hover:text-white text-black"
           >
             <div className="w-[65px] h-[65px] flex flex-col items-center justify-center">
               <img src={values.src} className="w-[20px] h-[20px] mb-[10px]" />

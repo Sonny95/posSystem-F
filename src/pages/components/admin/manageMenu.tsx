@@ -39,7 +39,7 @@ function ManageMenu() {
             onClick={() => {
               handleClick(data);
             }}
-            className={`w-[148px] bg-white h-[250px]  rounded-lg m-2 flex-col flex items-center justify-around cursor-pointer hover:bg-[#003049] hover:text-white 
+            className={`w-[148px] bg-white h-[250px]  rounded-lg m-2 flex-col flex items-center justify-around cursor-pointer hover:bg-[#db0006] hover:text-white 
           ${menuBtn === data.name ? "bg-[#003049] text-white" : "bg-white"}
           `}
           >

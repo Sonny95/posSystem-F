@@ -38,7 +38,7 @@ function ManageCategories() {
             onClick={() => {
               handleClick(data);
             }}
-            className={`w-[110px] bg-white h-[90px]  rounded-lg m-2 flex-col flex items-center justify-around cursor-pointer hover:bg-[#003049] hover:text-white 
+            className={`w-[110px] bg-white h-[90px]  rounded-lg m-2 flex-col flex items-center justify-around cursor-pointer hover:bg-[#db0006] hover:text-white 
           ${categoryBtn === data.name ? "bg-[#003049] text-white" : "bg-white"}
           `}
           >

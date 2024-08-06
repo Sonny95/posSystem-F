@@ -93,7 +93,7 @@ function AdminManageMenuManagement() {
         <div className=" w-full h-[48px] bottom-0 flex justify-center items-center">
           <button
             onClick={submitStatus}
-            className="w-full h-full bg-[#003049] z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#003049] hover:text-white text-gray-400"
+            className="w-full h-full bg-[#003049] z-10 flex justify-between items-center rounded-lg px-6 hover:bg-[#db0006] hover:text-white text-gray-400"
           >
             <p>Updated.</p>
             <p>{">"} </p>
