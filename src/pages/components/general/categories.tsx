@@ -95,7 +95,7 @@ function Categories({
                 key={values.id}
                 className={`rounded-lg cursor-pointer w-[110px] h-[95px]  flex flex-col
                 items-center justify-center my-[20px] hover:bg-[#db0006] hover:text-white 
-                ${hoveredCategory === values.name ? "bg-[#003049] text-white" : "bg-white"}
+                ${hoveredCategory === values.name ? "bg-[#db0006] text-white" : "bg-white"}
                 `}
               >
                 <div className="w-[110px] h-[65px] flex flex-col items-center justify-center">
