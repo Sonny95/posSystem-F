@@ -63,14 +63,18 @@ function Categories({
     <div className="w-[126px] h-full flex flex-col">
       <AdminButton />
       {/* Logo container */}
+
       <div className="w-[102px] h-[102px] mt-[10px] ml-4 flex flex-col items-center justify-center">
-        <img
-          src="/logo.png"
-          className="w-[91px] h-[51px] flex flex-col items-center justify-cente"
-        />
+        <Link href={"/"}>
+          <img
+            src="/logo.png"
+            className="ml-2 mt-4 w-[91px] h-[51px] flex flex-col items-center justify-cente"
+          />
+        </Link>
       </div>
+
       {/* categories container */}
-      <div className="w-[110px] h-full  mt-[10px] ml-4 ">
+      <div className="w-[110px] h-full  mt-[10px] ml-4">
         {isLoading
           ? // Skeleton
             Array.from({ length: 5 }).map((_, index) => (
