@@ -26,7 +26,7 @@ function MenuOrderContainer({ cartItems, cartTotalPrice, clicked }: MenuOrderCon
     <div className="w-[309px] h-full bg-white px-[10px] ">
       {/* delete button */}
       <div className="w-[289px] h-[24px] flex mt-[34px] bg-white text-lg mb-[20px] ">
-        <p className="font-medium mr-3">New</p>
+        <p className="font-medium mr-2">New</p>
         <p> Order</p>
 
         <button
