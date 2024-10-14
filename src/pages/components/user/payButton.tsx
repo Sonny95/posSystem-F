@@ -10,7 +10,7 @@ function PayButton({ cartTotalPrice, onClick = () => {} }: PayButtonProps) {
     <div className="w-full h-full">
       <button
         onClick={onClick}
-        className="w-full h-full bg-[#febb10] z-10 text-white flex justify-between items-center rounded-lg px-6 "
+        className="w-full h-full bg-[#febb10] hover:bg-[#db0006] z-10 text-white flex justify-between items-center rounded-lg px-6 "
       >
         <p>${cartTotalPrice?.toFixed(2)}</p>
         <p>Pay {">"} </p>
